@@ -1,0 +1,10 @@
+#!/bin/bash
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+parentdir="$(dirname "$DIR")"
+pid="$parentdir/tmp/pids/server.pid"
+if [ -f $pid ]; then
+  rm $pid
+fi
+fuser -k -n tcp 3000
+rails server -b 0.0.0.0

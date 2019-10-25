@@ -1,0 +1,2 @@
+require("open-uri")
+

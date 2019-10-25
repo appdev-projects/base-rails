@@ -1,0 +1,7 @@
+image: jelaniwoods/appdev-ruby2_6_5
+
+tasks:
+  - init: bin/setup
+ports:
+  - port: 3000
+    onOpen: open-preview
