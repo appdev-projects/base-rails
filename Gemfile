@@ -53,7 +53,7 @@ group :development, :test do
 end
 
 group :development do
-  gem 'annotate'
+  gem 'annotate', '< 3.0.0'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'draft_generators', github: 'firstdraft/draft_generators', branch: 'summer-2019'
