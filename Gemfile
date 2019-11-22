@@ -49,7 +49,6 @@ group :development, :test do
   gem 'pry-rails'
   gem 'sqlite3', '~> 1.4'
   gem 'table_print'
-  gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
   gem 'web_git', github: 'firstdraft/web_git'
 end
 
