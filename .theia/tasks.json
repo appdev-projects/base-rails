@@ -1,0 +1,14 @@
+{
+   "tasks": [
+      {
+         "label": "ERB formatter",
+         "type": "shell",
+         "command": "bin/format_erbs",
+         "presentation": {
+            "reveal": "never",
+            "echo": false
+         },
+         "problemMatcher": []
+      }
+   ]
+} 

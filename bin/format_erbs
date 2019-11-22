@@ -1,0 +1,10 @@
+#!/bin/bash
+source ~/.rvm/scripts/rvm
+echo "Formating ERB files in app/views..."
+find app/views/ -type f > erb_files.txt;
+while read p
+  do htmlbeautifier "$p"
+  echo "."
+done <erb_files.txt
+
+echo "Formatting Complete."
