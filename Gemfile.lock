@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/firstdraft/draft_generators.git
-  revision: 0dd7bdff69534b3325579a7142c457bbf2f70c58
+  revision: 4f5ab605dc1278071f566566a969f10ccb0de76f
   branch: summer-2019
   specs:
     draft_generators (0.0.3)
@@ -206,7 +206,7 @@ GEM
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
       ruby_dep (~> 1.2)
-    loofah (2.3.1)
+    loofah (2.4.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
