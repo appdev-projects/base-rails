@@ -7,6 +7,7 @@ gem 'activeadmin', '2.2.0'
 gem 'bcrypt'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'devise'
+gem 'http'
 gem 'jbuilder', '~> 2.7'
 gem 'puma', '~> 3.11'
 gem 'rails', '~> 6.0.0'
