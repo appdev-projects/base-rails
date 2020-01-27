@@ -1,4 +1,4 @@
-# Final Project
+# Base Rails
 
 ## Standard Workflow
 
