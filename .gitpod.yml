@@ -1,7 +1,15 @@
-image: jelaniwoods/appdev-ruby2_6_5
+image: jelaniwoods/appdev-winter-20-base-rails
 
 tasks:
-  - init: bin/setup
+  - init: yarn install --check-files && bin/setup
 ports:
   - port: 3000
     onOpen: open-preview
+
+vscode:
+  extensions:
+    - shd101wyy.markdown-preview-enhanced@0.5.1:s3vD5qiY6/HbtRrgDlbMiQ==
+    - vortizhe.simple-ruby-erb@0.2.1:BzpDuNAqJwUkxqT2t1YIuQ==
+    - CraigMaslowski.erb@0.0.1:5znDha/nn0PphUrpB9a5Nw==
+    - Vense.rails-snippets@0.5.0:w1Rd4bmOp7tM7xc3UJruRQ==
+    - wingrunr21.vscode-ruby@0.26.0:VakXVw0C77hAQ3U3AZTn1Q==
