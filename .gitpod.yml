@@ -1,11 +1,11 @@
-image: jelaniwoods/appdev-winter-20-base-rails
+image: jelaniwoods/appdev-ruby2_6_5
 
 tasks:
-  - init: yarn install --check-files && bin/setup
+  - init: bin/setup
 ports:
   - port: 3000
     onOpen: open-preview
-
+    
 vscode:
   extensions:
     - shd101wyy.markdown-preview-enhanced@0.5.1:s3vD5qiY6/HbtRrgDlbMiQ==
