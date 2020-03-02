@@ -12,6 +12,7 @@ gem 'jbuilder', '~> 2.7'
 gem "puma", ">= 3.12.3"
 gem "nokogiri", ">= 1.10.8"
 gem 'rails', '~> 6.0.0'
+gem 'sprockets', '< 4'
 gem 'sassc-rails'
 gem 'webpacker', '~> 4.0'
 gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'master'
