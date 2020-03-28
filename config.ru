@@ -2,10 +2,4 @@
 
 require_relative 'config/environment'
 
-map '/git' do
-  run JwGit::Server
-end
-
-map '/' do
-  run Rails.application
-end
+run Rails.application
