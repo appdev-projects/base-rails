@@ -1,0 +1,68 @@
+<div style='width: 800px;'>
+  <div id="map" style='width: 800px; height: 400px;'></div>
+</div>
+
+<% locations = [
+  {
+    "id" => 1,
+    "lat" => 41.8381065,
+    "lng" => -87.6512738,
+    "name" => "House of Cakes",
+    "address" => "6189 N Canfield Ave, Chicago, IL 60631, USA",
+    "description" => "Straight up somebody's house. The bake cakes in their pajamas.",
+  },
+  {
+    "id" => 2,
+    "lat" => 41.9100984,
+    "lng" => -87.6852883,
+    "name" => "Handlebar",
+    "address" => "2311 W North Ave, Chicago, IL 60647, USA",
+    "description" => "A bar with handles. Easy to pick up!",
+  }
+] %>
+
+<script>
+function initMap() {
+  // initiate a new map
+  var mapDiv = document.getElementById('map');
+  var map = new google.maps.Map(mapDiv);
+
+  // An empty bounds variable for seeting automatic zoom level (bounds of map)
+  var bounds = new google.maps.LatLngBounds();
+
+  <% colors = ["blue", "red", "purple", "green", "yellow"] %>
+  <%  locations.each do |place|   %>
+
+  // Make info window for this place
+  var infowindow_<%= place.fetch("id") %> = new google.maps.InfoWindow({
+    content: "<b><%= place.fetch("name") %></b>"  +
+    "<li><%= place.fetch("address") %> </li>" +
+    "<li><%= place.fetch("description") %></li> "
+  });
+
+  // Make marker for this place
+  var marker_<%= place.fetch("id") %> = new google.maps.Marker({
+    position: {lat: <%= place.fetch("lat") %>, lng: <%= place.fetch("lng") %>},
+    map: map,
+    title: "<%= place.fetch("name") %>",
+    icon: 'http://maps.google.com/mapfiles/ms/icons/<%= colors.sample %>-dot.png'
+  });
+
+  // Click to show info window
+  marker_<%= place.fetch("id") %>.addListener('click', function() {
+    infowindow_<%= place.fetch("id") %>.open(map, marker_<%= place.fetch("id") %>);
+  });
+
+  // Add this marker in map bounds
+  bounds.extend(new google.maps.LatLng(<%= place.fetch("lat") %>, <%= place.fetch("lng") %>));
+
+  <% end %>
+
+  // Size map to fit bounds
+  map.fitBounds(bounds);
+};
+
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5qwIlcKjijP_Ptmv46mk4cCjuWhSzS78&callback=initMap"
+async defer></script>
