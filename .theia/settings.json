@@ -1,4 +1,13 @@
 {
   "editor.autoSave": "on",
   "editor.tabSize": 2,
+  "emmet.includeLanguages": {
+    "erb": "html"
+  },
+  "solargraph.checkGemVersion": false,
+  "solargraph.hover": false,
+  "solargraph.diagnostics": false,
+  "solargraph.completion": false,
+  "solargraph.autoformat": false,
+  "solargraph.formatting": false
 }

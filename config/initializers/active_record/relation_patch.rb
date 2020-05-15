@@ -3,7 +3,7 @@ module ActiveRecord
     def to_s
       row_count = count
       
-      "Array containing #{row_count} #{model} #{"record".pluralize(row_count)}"
+      "#{self.class} (array with #{row_count} #{model} #{"instance".pluralize(row_count)} inside)"
     end
   end
 end

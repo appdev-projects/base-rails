@@ -5,15 +5,15 @@ class JsonOutputFormatter < RSpec::Core::Formatters::JsonFormatter
 
   def dump_summary(summary)
     total_points = summary.
-    examples.
-    map { |example| example.metadata[:points].to_i }.
-    sum
-
+      examples.
+      map { |example| example.metadata[:points].to_i }.
+      sum
+      
     earned_points = summary.
-    examples.
-    select { |example| example.execution_result.status == :passed }.
-    map { |example| example.metadata[:points].to_i }.
-    sum
+      examples.
+      select { |example| example.execution_result.status == :passed }.
+      map { |example| example.metadata[:points].to_i }.
+      sum
 
     @output_hash[:summary] = {
       duration: summary.duration,
@@ -24,15 +24,27 @@ class JsonOutputFormatter < RSpec::Core::Formatters::JsonFormatter
       earned_points: earned_points,
       score: (earned_points.to_f / total_points).round(4)
     }
+    score = (@output_hash[:summary][:score] * 100).round(2)
+    
+    if score.nan?
+      score = "This project is not graded."
+    else
+      score = score.to_s + "%"
+    end
+    
     
     @output_hash[:summary_line] = [
-      "#{summary.example_count} tests",
+      "#{summary.example_count} #{summary.example_count == 1 ? "test" : "tests"}",
       "#{summary.failure_count} failures",
       "#{earned_points}/#{total_points} points",
-      "#{(@output_hash[:summary][:score] * 100).round(2)}%",
+      score,
     ].join(", ")
   end
 
+  def close(_notification)
+    output.write  Oj.dump @output_hash
+  end
+  
   private
 
   def format_example(example)
