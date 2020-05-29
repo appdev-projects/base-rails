@@ -5,9 +5,12 @@
     "@rails/activestorage": "^6.0.3",
     "@rails/ujs": "^6.0.3",
     "@rails/webpacker": "^4.2.2",
-    "serialize-javascript": "^3.0.0",
     "kind-of": "^6.0.3",
-    "minimist": "^1.2.3"
+    "minimist": "^1.2.5",
+    "serialize-javascript": "^3.0.0"
+  },
+  "resolutions": {
+    "minimist": "^1.2.5"
   },
   "version": "0.1.0",
   "devDependencies": {
