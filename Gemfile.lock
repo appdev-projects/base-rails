@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/firstdraft/draft_generators.git
-  revision: d7ccfa08d1c9eb00b9f7b935a0f8e0c812dfe9bd
+  revision: 0e3e763741e902c523a3e2922572ad47c1d72848
   branch: winter-2020
   specs:
     draft_generators (0.0.3)
@@ -273,7 +273,7 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     regexp_parser (1.7.0)
-    responders (3.0.0)
+    responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
     rspec (3.9.0)
