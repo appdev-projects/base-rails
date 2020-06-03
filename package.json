@@ -4,7 +4,7 @@
   "dependencies": {
     "@rails/activestorage": "^6.0.3",
     "@rails/ujs": "^6.0.3",
-    "@rails/webpacker": "^4.2.2",
+    "@rails/webpacker": "4.2.2",
     "kind-of": "^6.0.3",
     "minimist": "^1.2.5",
     "serialize-javascript": "^3.0.0"
