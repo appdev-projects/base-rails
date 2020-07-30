@@ -1,5 +1,5 @@
 RSpec::Support.require_rspec_core "formatters/json_formatter"
-
+require "oj"
 class JsonOutputFormatter < RSpec::Core::Formatters::JsonFormatter
   RSpec::Core::Formatters.register self, :dump_summary
 
@@ -15,21 +15,25 @@ class JsonOutputFormatter < RSpec::Core::Formatters::JsonFormatter
       map { |example| example.metadata[:points].to_i }.
       sum
 
+    score = (earned_points.to_f / total_points).round(4)
+    score = 0 if score.nan?
+    
     @output_hash[:summary] = {
       duration: summary.duration,
       example_count: summary.example_count,
+      errors_outside_of_examples_count: summary.errors_outside_of_examples_count,
       failure_count: summary.failure_count,
       pending_count: summary.pending_count,
       total_points: total_points,
       earned_points: earned_points,
-      score: (earned_points.to_f / total_points).round(4)
+      score: score
     }
-    score = (@output_hash[:summary][:score] * 100).round(2)
+    result = (@output_hash[:summary][:score] * 100).round(2)
     
-    if score.nan?
-      score = "This project is not graded."
+    if summary.errors_outside_of_examples_count.positive?
+      result = "An error occurred while running tests"
     else
-      score = score.to_s + "%"
+      result = result.to_s + "%"
     end
     
     
@@ -37,7 +41,7 @@ class JsonOutputFormatter < RSpec::Core::Formatters::JsonFormatter
       "#{summary.example_count} #{summary.example_count == 1 ? "test" : "tests"}",
       "#{summary.failure_count} failures",
       "#{earned_points}/#{total_points} points",
-      score,
+      result,
     ].join(", ")
   end
 

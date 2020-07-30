@@ -1,4 +1,4 @@
-image: jelaniwoods/appdev2020-base-rails
+image: jelaniwoods/appdev2020summer-base-rails
 
 tasks:
   - init: yarn install --check-files && bin/setup 
@@ -13,3 +13,4 @@ vscode:
     - CraigMaslowski.erb@0.0.1:5znDha/nn0PphUrpB9a5Nw==
     - Vense.rails-snippets@0.5.0:w1Rd4bmOp7tM7xc3UJruRQ==
     - wingrunr21.vscode-ruby@0.26.0:VakXVw0C77hAQ3U3AZTn1Q==
+    - aliariff.vscode-erb-beautify@0.2.0:JPBIiJcuf3dj5jx4nE7u8Q==

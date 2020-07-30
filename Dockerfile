@@ -42,9 +42,9 @@ RUN /bin/bash -l -c "rvm use --default 2.6.6"
 
 RUN /bin/bash -l -c "gem install bundler"
 RUN /bin/bash -l -c "bundle install"
+RUN /bin/bash -l -c "gem uninstall -i /home/gitpod/.rvm/rubies/ruby-2.6.6/lib/ruby/gems/2.6.0 minitest"
 
 RUN echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
 RUN echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
 RUN echo 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi' >> ~/.bashrc
 RUN /bin/bash -l -c "gem install htmlbeautifier"
-RUN /bin/bash -l -c "gem install solargraph"

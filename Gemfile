@@ -5,19 +5,18 @@ ruby '2.6.6'
 
 gem 'bcrypt'
 gem 'bootsnap', '>= 1.4.2', require: false
-gem 'devise'
 gem 'http'
 gem 'jbuilder', '~> 2.7'
-gem "puma", ">= 3.12.3"
+gem 'puma', '~> 4.1'
 gem "nokogiri", ">= 1.10.8"
-gem 'rails', '~> 6.0.0'
+gem 'rails', '~> 6.0.3', '>= 6.0.3.2'
 gem 'sprockets', '< 4'
 gem 'sassc-rails'
 gem 'webpacker', '~> 4.0'
 gem 'faker'
 
 group :development do
-  gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'listen', '~> 3.2'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'spring'
   gem 'web-console', '>= 3.3.0'
@@ -31,16 +30,14 @@ group :development, :test do
   gem 'pry-rails'
   gem 'sqlite3', '~> 1.4.1'
   gem 'table_print'
-  gem 'web_git', github: 'firstdraft/web_git'
+  gem 'web_git', github: 'firstdraft/web_git', branch: 'spring2020'
 end
 
 group :development do
-  gem 'annotate', '< 3.0.0'
+  gem 'annotate'
   gem 'better_errors', '2.6'
   gem 'binding_of_caller'
   gem 'draft_generators', github: 'firstdraft/draft_generators', branch: 'winter-2020'
-  gem 'letter_opener'
-  gem 'meta_request'
   gem 'rails_db', '2.3.1'
 end
 
