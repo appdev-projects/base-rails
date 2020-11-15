@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get("/", { :controller => "application", :action => "homepage" })
 
 
   # Routes for the Like resource:

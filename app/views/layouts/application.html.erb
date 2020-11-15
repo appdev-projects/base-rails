@@ -16,6 +16,14 @@
   </head>
 
   <body>
+    <nav>
+      <%= @current_user.inspect %>
+
+      <a href="/user_sign_up">Sign up</a>
+      <a href="/user_sign_in">Sign in</a>
+      <a href="/user_sign_out">Sign out</a>
+    </nav>
+    
     <%= yield %>
   </body>
 </html>
