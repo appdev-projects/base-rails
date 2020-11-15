@@ -1,0 +1,86 @@
+<div>
+  <div>
+    <h1>
+      List of all friends
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new friend
+    </h2>
+
+    <form action="/insert_friend" method="post">
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id">
+      </div>
+
+      <button>
+        Create friend
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table>
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          User
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_friends.each do |a_friend| %>
+      <tr>
+        <td>
+          <%= a_friend.id %>
+        </td>
+
+        <td>
+          <%= a_friend.user_id %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_friend.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_friend.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/friends/<%= a_friend.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

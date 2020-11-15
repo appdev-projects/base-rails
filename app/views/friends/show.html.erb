@@ -1,0 +1,71 @@
+<div>
+  <div>
+    <h1>
+      Friend #<%= @the_friend.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/friends">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_friend/<%= @the_friend.id %>">
+          Delete friend
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        User
+      </dt>
+      <dd>
+        <%= @the_friend.user_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_friend.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_friend.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit friend
+    </h2>
+
+    <form action="/modify_friend/<%= @the_friend.id %>"  method="post" >
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id" value="<%= @the_friend.user_id %>">
+      </div>
+
+      <button>
+        Update friend
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
