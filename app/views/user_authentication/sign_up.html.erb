@@ -1,0 +1,41 @@
+<h1>Sign up</h1>
+
+<form action="/insert_user" method="post">
+
+  <div>
+    <label for="email_box">Email</label>
+    <input id="email_box" name="query_email" placeholder="Choose a email..." type="text">
+  </div>
+                 
+  <div>
+    <label for="first_name_box">First name</label>
+      
+    <input type="text" id="first_name_box" name="query_first_name">
+  </div>
+         
+  <div>
+    <label for="last_name_box">Last name</label>
+      
+    <input type="text" id="last_name_box" name="query_last_name">
+  </div>
+    
+  <div>
+    <label for="password_box">Password</label>
+    <input id="password_box" name="query_password" placeholder="Choose a password..." type="password">
+  </div>
+
+  <div>
+    <label for="password_confirmation_box">Password Confirmation</label>
+    <input id="password_confirmation_box" name="query_password_confirmation" placeholder="Confirm your password..." type="password">
+  </div>
+
+  <button>
+    Sign up
+  </button>
+</form>
+
+<hr>
+
+<p>
+  Or, <a href="/user_sign_in">Sign in</a> instead.
+</p>
