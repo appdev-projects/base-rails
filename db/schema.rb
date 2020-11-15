@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_15_061041) do
+ActiveRecord::Schema.define(version: 2020_11_15_061322) do
+
+  create_table "courses", force: :cascade do |t|
+    t.string "name"
+    t.string "section"
+    t.string "group_work"
+    t.string "group_size_min"
+    t.string "group_size_max"
+    t.string "concentration"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email"
