@@ -1,0 +1,86 @@
+<div>
+  <div>
+    <h1>
+      Like #<%= @the_like.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/likes">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_like/<%= @the_like.id %>">
+          Delete like
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Course
+      </dt>
+      <dd>
+        <%= @the_like.course_id %>
+      </dd>
+
+      <dt>
+        User
+      </dt>
+      <dd>
+        <%= @the_like.user_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_like.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_like.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit like
+    </h2>
+
+    <form action="/modify_like/<%= @the_like.id %>"  method="post" >
+      <div>
+        <label for="course_id_box">
+          Course
+        </label>
+
+        <input type="text" id="course_id_box" name="query_course_id" value="<%= @the_like.course_id %>">
+      </div>
+
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id" value="<%= @the_like.user_id %>">
+      </div>
+
+      <button>
+        Update like
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

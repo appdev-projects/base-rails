@@ -1,0 +1,102 @@
+<div>
+  <div>
+    <h1>
+      List of all likes
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new like
+    </h2>
+
+    <form action="/insert_like" method="post">
+      <div>
+        <label for="course_id_box">
+          Course
+        </label>
+
+        <input type="text" id="course_id_box" name="query_course_id">
+      </div>
+
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id">
+      </div>
+
+      <button>
+        Create like
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table>
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Course
+        </th>
+
+        <th>
+          User
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_likes.each do |a_like| %>
+      <tr>
+        <td>
+          <%= a_like.id %>
+        </td>
+
+        <td>
+          <%= a_like.course_id %>
+        </td>
+
+        <td>
+          <%= a_like.user_id %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_like.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_like.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/likes/<%= a_like.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>
