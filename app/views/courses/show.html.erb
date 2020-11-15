@@ -1,0 +1,146 @@
+<div>
+  <div>
+    <h1>
+      Course #<%= @the_course.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/courses">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_course/<%= @the_course.id %>">
+          Delete course
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Name
+      </dt>
+      <dd>
+        <%= @the_course.name %>
+      </dd>
+
+      <dt>
+        Section
+      </dt>
+      <dd>
+        <%= @the_course.section %>
+      </dd>
+
+      <dt>
+        Group work
+      </dt>
+      <dd>
+        <%= @the_course.group_work %>
+      </dd>
+
+      <dt>
+        Group size min
+      </dt>
+      <dd>
+        <%= @the_course.group_size_min %>
+      </dd>
+
+      <dt>
+        Group size max
+      </dt>
+      <dd>
+        <%= @the_course.group_size_max %>
+      </dd>
+
+      <dt>
+        Concentration
+      </dt>
+      <dd>
+        <%= @the_course.concentration %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_course.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_course.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit course
+    </h2>
+
+    <form action="/modify_course/<%= @the_course.id %>"  method="post" >
+      <div>
+        <label for="name_box">
+          Name
+        </label>
+
+        <input type="text" id="name_box" name="query_name" value="<%= @the_course.name %>">
+      </div>
+
+      <div>
+        <label for="section_box">
+          Section
+        </label>
+
+        <input type="text" id="section_box" name="query_section" value="<%= @the_course.section %>">
+      </div>
+
+      <div>
+        <label for="group_work_box">
+          Group work
+        </label>
+
+        <input type="text" id="group_work_box" name="query_group_work" value="<%= @the_course.group_work %>">
+      </div>
+
+      <div>
+        <label for="group_size_min_box">
+          Group size min
+        </label>
+
+        <input type="text" id="group_size_min_box" name="query_group_size_min" value="<%= @the_course.group_size_min %>">
+      </div>
+
+      <div>
+        <label for="group_size_max_box">
+          Group size max
+        </label>
+
+        <input type="text" id="group_size_max_box" name="query_group_size_max" value="<%= @the_course.group_size_max %>">
+      </div>
+
+      <div>
+        <label for="concentration_box">
+          Concentration
+        </label>
+
+        <input type="text" id="concentration_box" name="query_concentration" value="<%= @the_course.concentration %>">
+      </div>
+
+      <button>
+        Update course
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

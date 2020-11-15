@@ -2,6 +2,25 @@ Rails.application.routes.draw do
 
 
 
+  # Routes for the Course resource:
+
+  # CREATE
+  post("/insert_course", { :controller => "courses", :action => "create" })
+          
+  # READ
+  get("/courses", { :controller => "courses", :action => "index" })
+  
+  get("/courses/:path_id", { :controller => "courses", :action => "show" })
+  
+  # UPDATE
+  
+  post("/modify_course/:path_id", { :controller => "courses", :action => "update" })
+  
+  # DELETE
+  get("/delete_course/:path_id", { :controller => "courses", :action => "destroy" })
+
+  #------------------------------
+
   # Routes for the User account:
 
   # SIGN UP FORM

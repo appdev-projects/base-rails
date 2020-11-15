@@ -1,0 +1,166 @@
+<div>
+  <div>
+    <h1>
+      List of all courses
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new course
+    </h2>
+
+    <form action="/insert_course" method="post">
+      <div>
+        <label for="name_box">
+          Name
+        </label>
+
+        <input type="text" id="name_box" name="query_name">
+      </div>
+
+      <div>
+        <label for="section_box">
+          Section
+        </label>
+
+        <input type="text" id="section_box" name="query_section">
+      </div>
+
+      <div>
+        <label for="group_work_box">
+          Group work
+        </label>
+
+        <input type="text" id="group_work_box" name="query_group_work">
+      </div>
+
+      <div>
+        <label for="group_size_min_box">
+          Group size min
+        </label>
+
+        <input type="text" id="group_size_min_box" name="query_group_size_min">
+      </div>
+
+      <div>
+        <label for="group_size_max_box">
+          Group size max
+        </label>
+
+        <input type="text" id="group_size_max_box" name="query_group_size_max">
+      </div>
+
+      <div>
+        <label for="concentration_box">
+          Concentration
+        </label>
+
+        <input type="text" id="concentration_box" name="query_concentration">
+      </div>
+
+      <button>
+        Create course
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table>
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Name
+        </th>
+
+        <th>
+          Section
+        </th>
+
+        <th>
+          Group work
+        </th>
+
+        <th>
+          Group size min
+        </th>
+
+        <th>
+          Group size max
+        </th>
+
+        <th>
+          Concentration
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_courses.each do |a_course| %>
+      <tr>
+        <td>
+          <%= a_course.id %>
+        </td>
+
+        <td>
+          <%= a_course.name %>
+        </td>
+
+        <td>
+          <%= a_course.section %>
+        </td>
+
+        <td>
+          <%= a_course.group_work %>
+        </td>
+
+        <td>
+          <%= a_course.group_size_min %>
+        </td>
+
+        <td>
+          <%= a_course.group_size_max %>
+        </td>
+
+        <td>
+          <%= a_course.concentration %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_course.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_course.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/courses/<%= a_course.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>
