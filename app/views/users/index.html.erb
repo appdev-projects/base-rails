@@ -47,6 +47,31 @@
             Show details
           </a>
         </td>
+
+
+        <td>
+          <% the_friend = @current_user.friends.where({ :course_id => a_course.id }).at(0) %>
+
+          <% if the_like == nil %>
+          <form action="/insert_like" method = "post">
+
+            <input type="hidden" name="query_course_id" value="<%= a_course.id %>">
+            <button>Like this course!</button>
+
+          </form>
+
+          <% else %>
+            <a href="/delete_like/<%= the_like.id %>">
+              Remove like
+            </a>
+          <% end %>
+        </td>
+
+
+
+
+
+
       </tr>
       <% end %>
     </table>
