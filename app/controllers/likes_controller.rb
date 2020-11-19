@@ -20,13 +20,14 @@ class LikesController < ApplicationController
   def create
     the_like = Like.new
     the_like.course_id = params.fetch("query_course_id")
-    the_like.user_id = params.fetch("query_user_id")
+    the_like.user_id = @current_user.id
+    # the_like.user_id = params.fetch("query_user_id")
 
     if the_like.valid?
       the_like.save
-      redirect_to("/likes", { :notice => "Like created successfully." })
+      redirect_to("/courses", { :notice => "Like created successfully." })
     else
-      redirect_to("/likes", { :notice => "Like failed to create successfully." })
+      redirect_to("/courses", { :notice => "Like failed to create successfully." })
     end
   end
 
@@ -51,6 +52,6 @@ class LikesController < ApplicationController
 
     the_like.destroy
 
-    redirect_to("/likes", { :notice => "Like deleted successfully."} )
+    redirect_to("/courses", { :notice => "Like deleted successfully."} )
   end
 end

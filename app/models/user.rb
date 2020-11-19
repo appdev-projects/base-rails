@@ -20,4 +20,10 @@ class User < ApplicationRecord
   has_many(:friends, { :class_name => "Friend", :foreign_key => "user_id", :dependent => :destroy })
 
   has_many(:courses, { :through => :likes, :source => :course })
+
+  def full_name
+    combined_name = self.first_name + " " + self.last_name
+
+    return combined_name
+  end
 end

@@ -87,4 +87,14 @@ Rails.application.routes.draw do
              
   #------------------------------
 
+  # Routes for the User list:
+
+  # LIST OF ALL USERS
+  get("/users", { :controller => "users", :action => "index" })        
+  
+  # USER DETAILS
+  get("/users/:path_id", { :controller => "users", :action => "show" })        
+
+  #------------------------------
+
 end

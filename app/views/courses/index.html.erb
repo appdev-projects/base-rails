@@ -35,8 +35,20 @@
         <label for="group_work_box">
           Group work
         </label>
-
-        <input type="text" id="group_work_box" name="query_group_work">
+        <select id="group_work_box" name="query_group_work">
+          <option>
+            None
+          </option>
+          <option>
+            Light
+          </option>
+          <option>
+            Medium
+          </option>
+          <option>
+            Heavy
+          </option>
+        </select>
       </div>
 
       <div>
@@ -60,7 +72,21 @@
           Concentration
         </label>
 
-        <input type="text" id="concentration_box" name="query_concentration">
+        <select id="concentration_box" name="query_concentration">
+          <option>
+            Business Analytics
+          </option>
+          <option>
+            Operations
+          </option>
+          <option>
+            Finance
+          </option>
+          <option>
+            Entrepreneurship
+          </option>
+        </select>
+
       </div>
 
       <button>
@@ -75,10 +101,6 @@
   <div>
     <table>
       <tr>
-        <th>
-          ID
-        </th>
-
         <th>
           Name
         </th>
@@ -104,11 +126,7 @@
         </th>
 
         <th>
-          Created at
-        </th>
-
-        <th>
-          Updated at
+          Like
         </th>
 
         <th>
@@ -117,9 +135,6 @@
 
       <% @list_of_courses.each do |a_course| %>
       <tr>
-        <td>
-          <%= a_course.id %>
-        </td>
 
         <td>
           <%= a_course.name %>
@@ -146,16 +161,26 @@
         </td>
 
         <td>
-          <%= time_ago_in_words(a_course.created_at) %> ago
-        </td>
-        <td>
-          <%= time_ago_in_words(a_course.updated_at) %> ago
-        </td>
 
-        <td>
-          <a href="/courses/<%= a_course.id %>">
-            Show details
-          </a>
+          <% if @current_user.present? %>
+
+            <% the_like = @current_user.likes.where({ :course_id => a_course.id }).at(0) %>
+
+            <% if the_like == nil %>
+            <form action="/insert_like" method = "post">
+
+              <input type="hidden" name="query_course_id" value="<%= a_course.id %>">
+              <button>Like this course!</button>
+
+            </form>
+
+            <% else %>
+              <a href="/delete_like/<%= the_like.id %>">
+                Remove like
+              </a>
+            <% end %>
+          <% end %>
+
         </td>
       </tr>
       <% end %>

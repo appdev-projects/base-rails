@@ -1,0 +1,56 @@
+<div>
+  <div>
+    <h1>
+      List of all users
+    </h1>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table>
+      <tr>
+
+        <th>
+          Name
+        </th>
+
+        <th>
+          Photo
+        </th>
+
+        <th>
+          User
+        </th>
+
+        <th>
+          Friend
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_users.each do |a_user| %>
+      <tr>
+        <td>
+          <%= a_user.first_name + " " + a_user.last_name%>
+        </td>
+
+        <td>
+          <%= a_user.photo%>
+        </td>
+
+        <td>
+          <a href="/users/<%= a_user.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>
