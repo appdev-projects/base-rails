@@ -1,0 +1,57 @@
+<div>
+  <div>
+    <h1>
+      Here are the best courses for you
+    </h1>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table>
+      <tr>
+        <th>
+          Course
+        </th>
+
+        <th>
+          User
+        </th>
+
+        <th>
+          Frends who like this course
+        </th>
+
+        <th>
+          Number of friends who like this course
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_overlapping_courses.each do |a_course| %>
+      <tr>
+        <td>
+          <%= a_course.course_id %>
+        </td>
+
+        <td>
+          <%= a_course.user_id %>
+        </td>
+
+        <td>
+          <%= a_course %>
+        </td>
+        <td>
+          <%= a_course %>
+        </td>
+
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

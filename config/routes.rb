@@ -97,4 +97,12 @@ Rails.application.routes.draw do
 
   #------------------------------
 
+    # Routes for the Results list:
+
+  # RESULTS LIST
+  get("/results", { :controller => "results", :action => "index" })        
+  
+
+  #------------------------------
+
 end

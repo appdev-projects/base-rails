@@ -19,13 +19,14 @@ class FriendsController < ApplicationController
 
   def create
     the_friend = Friend.new
-    the_friend.user_id = params.fetch("query_user_id")
+    the_friend.sender_id = @current_user.id
+    the_friend.recipient_id = params.fetch("query_recipient_id")
 
     if the_friend.valid?
       the_friend.save
-      redirect_to("/friends", { :notice => "Friend created successfully." })
+      redirect_to("/users", { :notice => "Friend created successfully." })
     else
-      redirect_to("/friends", { :notice => "Friend failed to create successfully." })
+      redirect_to("/users", { :notice => "Friend failed to create successfully." })
     end
   end
 

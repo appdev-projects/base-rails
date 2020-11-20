@@ -33,6 +33,11 @@
       </tr>
 
       <% @list_of_users.each do |a_user| %>
+
+      <% if a_user.id == @current_user.id %>
+
+      <% else %>
+
       <tr>
         <td>
           <%= a_user.first_name + " " + a_user.last_name%>
@@ -50,20 +55,26 @@
 
 
         <td>
-          <% the_friend = @current_user.friends.where({ :course_id => a_course.id }).at(0) %>
+          <% users_friends = @current_user.friends.where({ :recipient_id => a_user.id }).at(0) %>
 
-          <% if the_like == nil %>
-          <form action="/insert_like" method = "post">
+          <% if a_user.id == @current_user.id %>
 
-            <input type="hidden" name="query_course_id" value="<%= a_course.id %>">
-            <button>Like this course!</button>
+          <% else %>
+
+          <% if users_friends == nil %>
+          <form action="/insert_friend" method = "post">
+
+            <input type="hidden" name="query_recipient_id" value="<%= a_user.id %>">
+            <button>Friend this user!</button>
 
           </form>
 
           <% else %>
-            <a href="/delete_like/<%= the_like.id %>">
-              Remove like
+            <a href="/delete_friend/<%= a_user.id %>">
+              Unfriend
             </a>
+          <% end %>
+          <% end %>
           <% end %>
         </td>
 

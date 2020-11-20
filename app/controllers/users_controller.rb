@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 
+
   def index
     all_users = User.all
     @list_of_users = all_users.order({ :first_name => :desc })

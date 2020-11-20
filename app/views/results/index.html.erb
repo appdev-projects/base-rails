@@ -1,0 +1,64 @@
+hi
+
+<div>
+
+<%
+  # Go through all the listings in the Friend table and pull out those where the sender_id is the same as the current user's id and push those into an array
+
+  users_friends = Array.new
+
+  all_friends = Friend.all
+  @list_of_friends = all_friends.order({ :first_name => :desc })
+
+  @list_of_friends.each do |a_friend|
+    if @current_user.id == a_friend.sender_id
+    users_friends.push(a_friend)
+    end
+  end
+
+  # Extract the recipient_id from each of those friends so I can match those users with the user table
+
+  recipient_ids = Array.new
+
+  users_friends.each do |a_friend|
+    recipient_ids.push(a_friend.recipient_id)
+  end
+
+  # Match the recipient ids with the users
+  
+  recipient_user_records = Array.new
+
+  recipient_ids.each do |a_recipient|
+    recipient_user_records.push(User.where({ :id => recipient_ids }))
+  end
+
+  # Now I've got an array with the user_id for all of the current_user friends...so no let's get all the courses those friends liked
+
+  friends_liked_courses = Array.new
+
+  recipient_user_records.at(0).each do |a_user|
+    friends_liked_courses.push(a_user.courses)
+  end
+%>
+
+<table border = 1>
+  <tr>
+    <td>
+      Courses
+    </td>
+  </tr>
+
+<% friends_liked_courses.each do |a_course| %>
+      <% a_course.each do |the_course| %>
+
+  <tr>
+    <td>
+      <%= the_course.name %>
+    </td>
+  </tr>
+<% end %>
+<% end %>
+
+</table>
+
+</div>

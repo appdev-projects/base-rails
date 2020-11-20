@@ -18,7 +18,7 @@ class User < ApplicationRecord
 
   has_many(:likes, { :class_name => "Like", :foreign_key => "user_id", :dependent => :destroy })
 
-  has_many(:friends, { :class_name => "Friend", :foreign_key => "user_id", :dependent => :destroy })
+  has_many(:friends, { :class_name => "Friend", :foreign_key => "sender_id", :dependent => :destroy })
 
   has_many(:courses, { :through => :likes, :source => :course })
 
