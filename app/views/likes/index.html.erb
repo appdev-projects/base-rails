@@ -1,7 +1,7 @@
 <div>
   <div>
     <h1>
-      List of all likes
+      List of user's likes
     </h1>
   </div>
 </div>
@@ -68,6 +68,7 @@
       </tr>
 
       <% @list_of_likes.each do |a_like| %>
+        <%if a_like.user_id == @current_user.id %>
       <tr>
         <td>
           <%= a_like.id %>
@@ -94,6 +95,7 @@
           </a>
         </td>
       </tr>
+      <% end %>
       <% end %>
     </table>
   </div>
