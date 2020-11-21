@@ -48,7 +48,17 @@ class ResultsController < ApplicationController
       @matching_course_ids << User.where({ :id => a_recipient }).at(0).likes.pluck(:course_id)
     end
 
-    
+# matching_course_ids
+matching_hash = @matching_course_ids.flatten.group_by{|e| e}.map{|k, v| [k, v.length]}.to_h
+
+
+# fetching hash
+@match_counts = matching_hash.map { |k,v| "#{Course.where({ :id => k }).at(0).name}} is liked by #{v} of your friends!" }
+
+@match_counts_k = matching_hash.map { |k,v| "#{Course.where({ :id => k }).at(0).name}" }
+@match_counts_v = matching_hash.map { |k,v| "#{v}" }
+
+
 
 # <% the_like = @current_user.likes.where({ :course_id => a_course.id }).at(0) %>
 
