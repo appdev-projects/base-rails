@@ -12,7 +12,10 @@
         Course
       </th>
       <th>
-        Number of <%= "#{@current_user.full_name}" %>'s friends who like this course!
+        Number of <%= "#{@current_user.full_name}" %>'s friends who like this course
+      </th>
+      <th>
+        Friends who liked this course
       </th>
     </tr>
   <% @matching_hash.each do |k, v| %>
@@ -21,8 +24,32 @@
         <%= p Course.where({ :id => k }).at(0).name %>
       </td>
       <td>
-        <%= p v %>
+        <%= p v.length %>
+      </td>
+      <td>
+        
       </td>
     </tr>
   <%end%>
 </table>
+
+
+<%=
+@matching_hash.each do |k, v|
+  p k
+  v.each do |(a, b)|
+    puts a.class
+  end
+end
+%>
+
+
+<p></p>
+
+<%=
+@matching_hash.each do |k, v|
+  v.each do |a|
+  p User.where({ :id => a }).at(0).full_name
+  end
+end
+%>

@@ -1,5 +1,8 @@
 class CoursesController < ApplicationController
+
   def index
+    self.must_be_signed_in
+
     matching_courses = Course.all
 
     @list_of_courses = matching_courses.order({ :created_at => :desc })

@@ -26,9 +26,9 @@ class ResultsController < ApplicationController
         @matching_course_ids << User.where({ :id => a_recipient }).at(0).likes.pluck(:course_id)
       end
     
-    # (c) Flatten the array and store in a hash key value pairs where key = course id and value = number of friends who like that course.
+    # (c) Flatten the array and store in a hash key value pairs where key = course id and value = instances of that course in the friends' likes.
 
-    @matching_hash = @matching_course_ids.flatten.group_by{|e| e}.map{|k, v| [k, v.length]}.to_h
+    @matching_hash = @matching_course_ids.flatten.group_by{|e| e}.map{|k, v| [k, v]}.to_h
 
     # (d) Render the page that will show the resultst.
 
