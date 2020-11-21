@@ -24,29 +24,18 @@
       </div>
 
       <div>
-        <label for="section_box">
-          Section
-        </label>
-
-        <input type="text" id="section_box" name="query_section">
-      </div>
-
-      <div>
         <label for="group_work_box">
           Group work
         </label>
         <select id="group_work_box" name="query_group_work">
           <option>
-            None
+            Not much
           </option>
           <option>
-            Light
+            Typical
           </option>
           <option>
-            Medium
-          </option>
-          <option>
-            Heavy
+            A lot
           </option>
         </select>
       </div>
@@ -57,14 +46,6 @@
         </label>
 
         <input type="text" id="group_size_min_box" name="query_group_size_min">
-      </div>
-
-      <div>
-        <label for="group_size_max_box">
-          Group size max
-        </label>
-
-        <input type="text" id="group_size_max_box" name="query_group_size_max">
       </div>
 
       <div>
@@ -101,12 +82,8 @@
   <div>
     <table>
       <tr>
-        <th>f
-          Name
-        </th>
-
         <th>
-          Section
+          Name
         </th>
 
         <th>
@@ -118,7 +95,7 @@
         </th>
 
         <th>
-          Group size max
+          Group size
         </th>
 
         <th>
@@ -141,19 +118,11 @@
         </td>
 
         <td>
-          <%= a_course.section %>
-        </td>
-
-        <td>
           <%= a_course.group_work %>
         </td>
 
         <td>
           <%= a_course.group_size_min %>
-        </td>
-
-        <td>
-          <%= a_course.group_size_max %>
         </td>
 
         <td>
