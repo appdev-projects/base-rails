@@ -1,68 +1,41 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
+  <title>
+    FinalProject
+  </title>
 
   <!-- Expand the number of characters we can use in the document beyond basic ASCII 🎉 -->
-<meta charset="utf-8">
+  <meta charset="utf-8">
 
-<!-- Connect Bootstrap CSS -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <!-- Make it responsive to small screens. Include only if you're using responsive CSS. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<!-- Connect Bootstrap JavaScript and its dependencies -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-<!-- Connect Font Awesome -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
+  <!-- Helper methods that create <link>s and <script>s for all of the stylesheets and javascript files in the non-`/public/` assets folders. -->
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%# javascript_pack_tag  'application' %>
 
-<!-- Make it responsive to small screens -->
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Rendering a partial that has all the <link>s and <script>s for assets we are pulling from content-delivery networks. -->
+  <%= render "shared/cdn_assets" %>
 
-    <title>FinalProject</title>
-    <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <style>
+    body { padding-bottom: 70px }
+  </style>
+</head>
 
-    <!-- Expand the number of characters we can use in the document beyond basic ASCII 🎉 -->
-    <meta charset="utf-8">
+<body>
+  <%= render "shared/navbar" %>
 
-    <!-- Make it responsive to small screens -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <%= csp_meta_tag %>
+  <div class="container">
+    <%= render "shared/flashes" %>
 
-    <%= stylesheet_link_tag 'application', media: 'all' %>
-
-  </head>
-
-  <body>
-    <nav>
-
-      <% if notice.present? %>
-        <div style="border: thin green solid; color: green">
-          <%= notice %>
-        </div>
-      <% end %>
-
-      <% if alert.present? %>
-        <div style="border: thin red solid; color: red">
-          <%= alert %>
-        </div>
-      <% end %>
-
-      <%= @current_user.inspect %>
-      <div>
-        <a href="/user_sign_up">Sign up</a>
-        <a href="/user_sign_in">Sign in</a>
-        <a href="/user_sign_out">Sign out</a>
-      </div>
-
-      <div>
-        <a href="/courses">Courses</a>
-        <a href="/users">Users</a>
-        <a href="/likes">Likes</a>
-        <a href="/results">Results</a>
-      </div>
-
-    </nav>
-    
     <%= yield %>
-  </body>
+  </div>
+
+</body>
 </html>

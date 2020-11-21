@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <title>FinalProject</title>
+    <%= csrf_meta_tags %>
+
+    <!-- Expand the number of characters we can use in the document beyond basic ASCII 🎉 -->
+    <meta charset="utf-8">
+
+    <!-- Make it responsive to small screens -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+
+  </head>
+
+  <body>
+    <nav>
+
+      <% if notice.present? %>
+        <div style="border: thin green solid; color: green">
+          <%= notice %>
+        </div>
+      <% end %>
+
+      <% if alert.present? %>
+        <div style="border: thin red solid; color: red">
+          <%= alert %>
+        </div>
+      <% end %>
+
+      <%= @current_user.inspect %>
+      <div>
+        <a href="/user_sign_up">Sign up</a>
+        <a href="/user_sign_in">Sign in</a>
+        <a href="/user_sign_out">Sign out</a>
+      </div>
+
+      <div>
+        <a href="/courses">Courses</a>
+        <a href="/users">Users</a>
+        <a href="/likes">Likes</a>
+        <a href="/results">Results</a>
+      </div>
+
+    </nav>
+    
+    <%= yield %>
+  </body>
+</html>
