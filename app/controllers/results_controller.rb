@@ -51,9 +51,13 @@ class ResultsController < ApplicationController
 # matching_course_ids
 matching_hash = @matching_course_ids.flatten.group_by{|e| e}.map{|k, v| [k, v.length]}.to_h
 
+# delete this instance variable if i don't end up using it
+@matching_hash = @matching_course_ids.flatten.group_by{|e| e}.map{|k, v| [k, v.length]}.to_h
+
 
 # fetching hash
 @match_counts = matching_hash.map { |k,v| "#{Course.where({ :id => k }).at(0).name}} is liked by #{v} of your friends!" }
+
 
 @match_counts_k = matching_hash.map { |k,v| "#{Course.where({ :id => k }).at(0).name}" }
 @match_counts_v = matching_hash.map { |k,v| "#{v}" }

@@ -1,44 +1,28 @@
 <h1> Matching Courses </h1>
 
+<p></p>
+
+
 
 <p></p>
 
-<table>
-<tr>
-  <th>
-    Course
-  </th>
-  <th>
-    Number of <%= "#{@current_user.full_name}" %>'s friends who like this course!
-  </th>
-</tr>
-
-<% @match_counts_k.each do |a| %>
-<tr>
-  <td>
-    <%= a %>
-  </td>
-<%end%>
-
-<% @match_counts_v.each do |b| %>
-  <td>
-    <%= b %>
-  </td>
-</tr>
-<%end%>
+<table border=1>
+    <tr>
+      <th>
+        Course
+      </th>
+      <th>
+        Number of <%= "#{@current_user.full_name}" %>'s friends who like this course!
+      </th>
+    </tr>
+  <% @matching_hash.each do |k, v| %>
+    <tr>
+      <td>
+        <%= p Course.where({ :id => k }).at(0).name %>
+      </td>
+      <td>
+        <%= p v %>
+      </td>
+    </tr>
+  <%end%>
 </table>
-
-
-<p></p>
-Flattened array of friends' likes:  <%=
-    a = @matching_course_ids.flatten
-    
-    a.each do |b|
-      Course.where({ :id => b }).name
-    end
-
-  %>
-<p></p>
-recipient_ids: <%= @recipient_ids %>
-<p></p>
-
