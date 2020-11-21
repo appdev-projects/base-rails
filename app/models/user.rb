@@ -27,4 +27,6 @@ class User < ApplicationRecord
 
     return combined_name
   end
+
+
 end

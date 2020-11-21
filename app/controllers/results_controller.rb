@@ -1,17 +1,56 @@
 class ResultsController < ApplicationController
   def index
-    
-    #friends_id = Array.new
-    @sender_ids = Friend.where("sender_id = ? or recipient_id = ?", @current_user.id, @current_user.id ).pluck(:sender_id)
-    @recipient_ids = Friend.where("sender_id = ? or recipient_id = ?", @current_user.id, @current_user.id ).pluck(:recipient_id)
 
-    render({ :template => "results/index.html.erb" })
+    users_friends = Array.new
+
+    all_friends = Friend.all
+    @list_of_friends = all_friends
+
+    @list_of_friends.each do |a_friend|
+      if @current_user.id == a_friend.sender_id
+        users_friends.push(a_friend)
+      end
+    end
+
+    # Extract the recipient_id from each of those friends so I can match those users with the user table
+
+    @recipient_ids = Array.new
+
+    users_friends.each do |a_friend|
+      @recipient_ids.push(a_friend.recipient_id)
+    end
+
+
+    
+    @friends_courses = Array.new
+    @friends_courses_ids = Array.new
+
+    @recipient_ids.each do |an_id|
+      @friends_courses.push(User.where({ :id => an_id }).at(0).courses)
+      @friends_courses.each do |a_course|
+        @friends_courses_ids.push(a_course.at(0).id)
+      end
+    end
+
+
+
 
 # Command .Pluck will just pull out all the values from a single key: will create an array with just those numbers inside of it
 
-# Move stuff to controller
+    #friends_id = Array.new
+    #@sender_ids = Friend.where("sender_id = ? or recipient_id = ?", @current_user.id, @current_user.id ).pluck(:sender_id)
+    #@recipient_ids = Friend.where("sender_id = ? or recipient_id = ?", @current_user.id, @current_user.id ).pluck(:recipient_id)
 
 # Array with just friend’s ids: then query the courses table with that…once I have those courses, I can do a count where ID is this in that active record relation
+
+@matching_course_ids = Array.new
+    @recipient_ids.each do |a_recipient|
+      @matching_course_ids << User.where({ :id => a_recipient }).at(0).likes.pluck(:course_id)
+    end
+
+    
+
+# <% the_like = @current_user.likes.where({ :course_id => a_course.id }).at(0) %>
 
 # I want to pass that ID
 # Query likes table by IDs of friends and return all of courses they like
@@ -21,6 +60,8 @@ class ResultsController < ApplicationController
 
 # First where query whole likes table by friend ids
 # Second where query records returned by the course ID inside of my loop
+
+    render({ :template => "results/index.html.erb" })
 
   end
   

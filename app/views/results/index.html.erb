@@ -1,8 +1,26 @@
 <h1> Matching Courses </h1>
 
 <div>
+matching_course_ids: <%= @matching_course_ids.flatten.group_by{|e| e}.map{|k, v| [k, v.length]}.to_h %>
+<p></p>
+recipient_ids: <%= @recipient_ids %>
+<p></p>
+friends_courses: <%= @friends_courses %>
+<p></p>
+friends_courses_ids: <%= @friends_courses_ids %>
+<p></p>
 
-<%= @sender_ids %>
+<%= @friends_courses.each do |a_course|
+  a_course
+  end
+%>
+
+<p></p>
+
+
+    <% # @recipient_ids.each do |an_id| %>
+    <% # User.where({ :id => an_id }).at(0).courses %>
+    <% # end %>
 
 
   <table border = "1">
