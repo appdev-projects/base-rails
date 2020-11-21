@@ -23,8 +23,7 @@ class CoursesController < ApplicationController
     the_course.name = params.fetch("query_name")
     the_course.section = params.fetch("query_section")
     the_course.group_work = params.fetch("query_group_work")
-    the_course.group_size_min = params.fetch("query_group_size_min")
-    the_course.group_size_max = params.fetch("query_group_size_max")
+    the_course.group_size = params.fetch("query_group_size")
     the_course.concentration = params.fetch("query_concentration")
 
     if the_course.valid?
@@ -42,8 +41,7 @@ class CoursesController < ApplicationController
     the_course.name = params.fetch("query_name")
     the_course.section = params.fetch("query_section")
     the_course.group_work = params.fetch("query_group_work")
-    the_course.group_size_min = params.fetch("query_group_size_min")
-    the_course.group_size_max = params.fetch("query_group_size_max")
+    the_course.group_size = params.fetch("query_group_size")
     the_course.concentration = params.fetch("query_concentration")
 
     if the_course.valid?

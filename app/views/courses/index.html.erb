@@ -41,11 +41,29 @@
       </div>
 
       <div>
-        <label for="group_size_min_box">
-          Group size min
+        <label for="group_size_box">
+          Group size
         </label>
-
-        <input type="text" id="group_size_min_box" name="query_group_size_min">
+        <select id="group_size_box" name="query_group_size">
+          <option>
+            0
+          </option>
+          <option>
+            1
+          </option>
+          <option>
+            2
+          </option>
+          <option>
+            3
+          </option>
+          <option>
+            4
+          </option>
+          <option>
+            5
+          </option>
+        </select>
       </div>
 
       <div>
@@ -91,10 +109,6 @@
         </th>
 
         <th>
-          Group size min
-        </th>
-
-        <th>
           Group size
         </th>
 
@@ -122,7 +136,7 @@
         </td>
 
         <td>
-          <%= a_course.group_size_min %>
+          <%= a_course.group_size %>
         </td>
 
         <td>
