@@ -23,7 +23,7 @@ class ResultsController < ApplicationController
     
     @matching_course_ids = Array.new
       recipient_ids.each do |a_recipient|
-        @matching_course_ids << User.where({ :id => a_recipient }).at(0).likes.pluck(:course_id)
+        @matching_course_ids << if User.where({ :id => a_recipient }).at(0).likes.pluck(:course_id) == @current_user.likes.pluck(:course_id)
       end
     
     # (c) Flatten the array and store in a hash key value pairs where key = course id and value = instances of that course in the friends' likes.
