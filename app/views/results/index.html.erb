@@ -1,64 +1,30 @@
-<h1> Matching Courses </h1>
-
-<p></p>
-
-matching_hash: <%= @matching_hash %>
-
-<p></p>
-
-list_of_friends: <%= @list_of_friends %>
-
-<p></p>
-
-matching_course_ids: <%= @matching_course_ids %>
-
-<p></p>
-
-current user course IDs: <%= @current_user_course_ids %>
-
-<p></p>
-
-overlapping_course_ids: <%= @overlapping_course_ids %>
+<h1>
+  The Results
+</h1>
 
 <p></p>
 
 
-<p></p>
-
-<table border=1>
+<table class="table table-striped">
+  <thead>
     <tr>
-      <th>
-        Course
-      </th>
-      <th>
-        Number of <%= "#{@current_user.full_name}" %>'s friends who like this course
-      </th>
-      <th>
-        Friends who liked this course
-      </th>
+      <th scope="col">Course</th>
+      <th scope="col">How many friends are also interested?</th>
+      <th scope="col">Status</th>
     </tr>
-  <% @matching_hash.each do |k, v| %>
+  </thead>
+  <tbody>
+    <% @printable_results.each do |k,v| %>
     <tr>
+      <th scope="row"><%= p k%></th>
+      <td><%= p v%></td>
       <td>
-        <%= if @overlapping_course_ids.include? k
-        p Course.where({ :id => k }).at(0).name "+" v.length
-        end
-        %>
+          <%= if Course.where({ :name => k }).at(0).group_size + 1 - v <= 0
+          p "You have enough interest to fill a group!"
+          else
+          p "You only need #{Course.where({ :name => k }).at(0).group_size + 1 - v} more friends to fill a group!"
+          end%>
       </td>
-      <td>
-        <%= 
-         p v.length %>
-        <%end%>
-      </td>
-     
-
-      <td>
-        
-      </td>
+    <%end%>
     </tr>
 </table>
-
-
-
-<p></p>
-
