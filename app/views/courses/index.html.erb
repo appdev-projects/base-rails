@@ -1,12 +1,129 @@
 <div>
   <div>
     <h1>
-      List of all courses
+      Which courses are you intersted in taking?
     </h1>
   </div>
 </div>
 
 <hr>
+<div>
+  <div>
+
+
+
+
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Course</th>
+      <th scope="col">Amount of group work</th>
+      <th scope="col">Group size</th>
+      <th scope="col">Interested in taking it?</th>
+    </tr>
+  </thead>
+  <tbody>
+   <% @list_of_courses.each do |a_course| %>
+    <tr>
+      <th scope="row"><%= a_course.name %></th>
+      <td><%= a_course.group_work %></td>
+      <td><%= a_course.group_size %></td>
+      <td>          <% if @current_user.present? %>
+
+            <% the_like = @current_user.likes.where({ :course_id => a_course.id }).at(0) %>
+
+            <% if the_like == nil %>
+            <form action="/insert_like" method = "post">
+
+              <input type="hidden" name="query_course_id" value="<%= a_course.id %>">
+              <button>Like this course!</button>
+
+            </form>
+
+            <% else %>
+              <a href="/delete_like/<%= the_like.id %>">
+                Remove like
+              </a>
+            <% end %>
+          <% end %>
+      </td>
+    </tr>
+  <%end%>
+  
+    </table>
+  </div>
+</div>
+
+<hr>
+
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Add a new course</h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+
+    <form action="/insert_course" method="post">
+      <div>
+        <label for="name_box">
+          Name
+        </label>
+
+        <input type="text" id="name_box" name="query_name">
+      </div>
+
+      <div>
+        <label for="group_work_box">
+          Group work
+        </label>
+        <select id="group_work_box" name="query_group_work">
+          <option>
+            Not much
+          </option>
+          <option>
+            Typical
+          </option>
+          <option>
+            A lot
+          </option>
+        </select>
+      </div>
+
+      <div>
+        <label for="group_size_box">
+          Group size
+        </label>
+        <select id="group_size_box" name="query_group_size">
+          <option>
+            0
+          </option>
+          <option>
+            1
+          </option>
+          <option>
+            2
+          </option>
+          <option>
+            3
+          </option>
+          <option>
+            4
+          </option>
+          <option>
+            5
+          </option>
+        </select>
+      </div>
+
+      <button>
+        Create course
+      </button>
+    </form>
+    
+  </div>
+</div>
+
+
 
 <div>
   <div>
@@ -66,109 +183,9 @@
         </select>
       </div>
 
-      <div>
-        <label for="concentration_box">
-          Concentration
-        </label>
-
-        <select id="concentration_box" name="query_concentration">
-          <option>
-            Business Analytics
-          </option>
-          <option>
-            Operations
-          </option>
-          <option>
-            Finance
-          </option>
-          <option>
-            Entrepreneurship
-          </option>
-        </select>
-
-      </div>
-
       <button>
         Create course
       </button>
     </form>
   </div>
 </div>
-
-<hr>
-<div>
-  <div>
-    <table>
-      <tr>
-        <th>
-          Name
-        </th>
-
-        <th>
-          Group work
-        </th>
-
-        <th>
-          Group size
-        </th>
-
-        <th>
-          Concentration
-        </th>
-
-        <th>
-          Like
-        </th>
-
-        <th>
-        </th>
-      </tr>
-
-      <% @list_of_courses.each do |a_course| %>
-      <tr>
-
-        <td>
-          <%= a_course.name %>
-        </td>
-
-        <td>
-          <%= a_course.group_work %>
-        </td>
-
-        <td>
-          <%= a_course.group_size %>
-        </td>
-
-        <td>
-          <%= a_course.concentration %>
-        </td>
-
-        <td>
-
-          <% if @current_user.present? %>
-
-            <% the_like = @current_user.likes.where({ :course_id => a_course.id }).at(0) %>
-
-            <% if the_like == nil %>
-            <form action="/insert_like" method = "post">
-
-              <input type="hidden" name="query_course_id" value="<%= a_course.id %>">
-              <button>Like this course!</button>
-
-            </form>
-
-            <% else %>
-              <a href="/delete_like/<%= the_like.id %>">
-                Remove like
-              </a>
-            <% end %>
-          <% end %>
-
-        </td>
-      </tr>
-      <% end %>
-    </table>
-  </div>
-</div>
-
-<hr>
