@@ -41,11 +41,13 @@ overlapping_course_ids: <%= @overlapping_course_ids %>
     <tr>
       <td>
         <%= if @overlapping_course_ids.include? k
-        p Course.where({ :id => k }).at(0).name
-        end%>
+        p Course.where({ :id => k }).at(0).name "+" v.length
+        end
+        %>
       </td>
       <td>
-        <%= p v.length %>
+        <%= 
+         p v.length %>
         <%end%>
       </td>
      

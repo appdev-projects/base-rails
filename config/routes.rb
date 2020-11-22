@@ -95,6 +95,9 @@ Rails.application.routes.draw do
   # USER DETAILS
   get("/users/:path_id", { :controller => "users", :action => "show" })        
 
+  # INVITE USER
+  post("/invite_user", { :controller => "users", :action => "invite_user" })
+
   #------------------------------
 
     # Routes for the Results list:

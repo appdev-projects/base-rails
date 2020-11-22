@@ -24,7 +24,7 @@
             <% if the_like == nil %>
             <form action="/insert_like" method = "post">
               <input type="hidden" name="query_course_id" value="<%= a_course.id %>">
-              <button class="btn btn-secondary" type="submit"><i class="fas fa-heart-broken"></i> Ugh!</button>
+              <button class="btn btn-secondary" type="submit"><i class="fas fa-heart-broken"></i> Ugh</button>
             </form>
 
             <% else %>
@@ -43,7 +43,7 @@
 <div class="card" style="width: 21rem;">
   <div class="card-body">
     <h5 class="card-title">Don't see the course you want?</h5>
-    <p class="card-text">Add a new course here</p>
+    <p class="card-text">Add a new course here!</p>
 
     <form action="/insert_course" method="post">
       <div>

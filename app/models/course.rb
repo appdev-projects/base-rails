@@ -10,6 +10,9 @@
 #  updated_at :datetime         not null
 #
 class Course < ApplicationRecord
+
+  validates(:name, { :presence => true })
+
   has_many(:likes, { :class_name => "Like", :foreign_key => "course_id", :dependent => :destroy })
 
   has_many(:users, { :through => :likes, :source => :user })

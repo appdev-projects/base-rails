@@ -23,30 +23,44 @@
           <% else %>
 
           <% if users_friends == nil %>
-          <form action="/insert_friend" method = "post">
-            <input type="hidden" name="query_recipient_id" value="<%= a_user.id %>">
 
-            <button>Friend this user!</button>
-          </form>
+
+
+            <form action="/insert_friend" method = "post">
+              <input type="hidden" name="query_recipient_id" value="<%= a_user.id %>">
+              <button class="btn btn-secondary" type="submit"><i class="far fa-meh"></i> Meh</button>
+            </form>
 
           <% else %>
-            <a href="/delete_friend/<%= Friend.where({ :sender_id => @current_user.id, :recipient_id => a_user.id }).at(0).id %>">
-              <i class="far fa-grin-stars"></i>
-            </a>
 
+            <a href="/delete_friend/<%= Friend.where({ :sender_id => @current_user.id, :recipient_id => a_user.id }).at(0).id %>">
+              <button class="btn btn-primary" type="submit"><i class="far fa-grin-stars"></i> Heck yes!</button>
+            </a>
           <% end %>
           <% end %>
         <% end %>
       </td>
-
     </tr>
   <%end%>
 </table>
 
-
-
-
-
-
-
 <hr>
+
+<div class="card" style="width: 21rem;">
+  <div class="card-body">
+    <h5 class="card-title">Don't see a friend here?</h5>
+    <p class="card-text">Tell them to join!</p>
+
+    <form action = "/invite_user" method = "post">
+      <div>
+        <label for="name_box">
+          Their phone number
+        </label>
+        <input type="tel" id="name_box" name="to" pattern="[0-9]{10}" required placeholder="9876543210">
+        <div><i>U.S. numbers only</i></div>
+        <button class="btn btn-primary">Invite them</button>
+      </div>
+    </form>
+
+  </div>
+</div>
