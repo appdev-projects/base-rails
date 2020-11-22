@@ -35,15 +35,13 @@
 
             <% if the_like == nil %>
             <form action="/insert_like" method = "post">
-
               <input type="hidden" name="query_course_id" value="<%= a_course.id %>">
-              <button>Like this course!</button>
-
+              <button class="btn btn-secondary" type="submit"><i class="fas fa-heart-broken"></i> Ugh!</button>
             </form>
 
             <% else %>
               <a href="/delete_like/<%= the_like.id %>">
-                Remove like
+                <button class="btn btn-primary" type="submit"><i class="fas fa-heart" color="red"></i> Yep!</button>
               </a>
             <% end %>
           <% end %>
@@ -57,16 +55,15 @@
 
 <hr>
 
-<div class="card" style="width: 18rem;">
+<div class="card" style="width: 21rem;">
   <div class="card-body">
-    <h5 class="card-title">Add a new course</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <h5 class="card-title">Don't see the course you want?</h5>
+    <p class="card-text">Add a new course here</p>
 
     <form action="/insert_course" method="post">
       <div>
         <label for="name_box">
-          Name
+          Course name
         </label>
 
         <input type="text" id="name_box" name="query_name">
@@ -74,7 +71,7 @@
 
       <div>
         <label for="group_work_box">
-          Group work
+          Amount of group work
         </label>
         <select id="group_work_box" name="query_group_work">
           <option>
@@ -115,77 +112,8 @@
         </select>
       </div>
 
-      <button>
-        Create course
-      </button>
+      <button class="btn btn-primary">Add course</button>
     </form>
-    
-  </div>
-</div>
 
-
-
-<div>
-  <div>
-    <h2>
-      Add a new course
-    </h2>
-
-    <form action="/insert_course" method="post">
-      <div>
-        <label for="name_box">
-          Name
-        </label>
-
-        <input type="text" id="name_box" name="query_name">
-      </div>
-
-      <div>
-        <label for="group_work_box">
-          Group work
-        </label>
-        <select id="group_work_box" name="query_group_work">
-          <option>
-            Not much
-          </option>
-          <option>
-            Typical
-          </option>
-          <option>
-            A lot
-          </option>
-        </select>
-      </div>
-
-      <div>
-        <label for="group_size_box">
-          Group size
-        </label>
-        <select id="group_size_box" name="query_group_size">
-          <option>
-            0
-          </option>
-          <option>
-            1
-          </option>
-          <option>
-            2
-          </option>
-          <option>
-            3
-          </option>
-          <option>
-            4
-          </option>
-          <option>
-            5
-          </option>
-        </select>
-      </div>
-
-      <button>
-        Create course
-      </button>
-    </form>
   </div>
 </div>
