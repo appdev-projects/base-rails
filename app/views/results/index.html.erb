@@ -2,9 +2,26 @@
 
 <p></p>
 
-<%= @matching_hash %>
+matching_hash: <%= @matching_hash %>
 
-<%= @list_of_friends %>
+<p></p>
+
+list_of_friends: <%= @list_of_friends %>
+
+<p></p>
+
+matching_course_ids: <%= @matching_course_ids %>
+
+<p></p>
+
+current user course IDs: <%= @current_user_course_ids %>
+
+<p></p>
+
+overlapping_course_ids: <%= @overlapping_course_ids %>
+
+<p></p>
+
 
 <p></p>
 
@@ -23,10 +40,13 @@
   <% @matching_hash.each do |k, v| %>
     <tr>
       <td>
-        <%= p Course.where({ :id => k }).at(0).name %>
+        <%= if @overlapping_course_ids.include? k
+        p Course.where({ :id => k }).at(0).name
+        end%>
       </td>
       <td>
-        <%= p v.length %><%end%>
+        <%= p v.length %>
+        <%end%>
       </td>
      
 

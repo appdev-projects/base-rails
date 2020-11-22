@@ -50,6 +50,6 @@ class FriendsController < ApplicationController
 
     the_friend.destroy
 
-    redirect_to("/friends", { :notice => "Friend deleted successfully."} )
+    redirect_to("/users", { :notice => "Friend deleted successfully."} )
   end
 end

@@ -1,61 +1,22 @@
-<div>
-  <div>
-    <h1>
-      List of all users
-    </h1>
-  </div>
-</div>
+<h1>
+  Who do you like to work in a group with?
+</h1>
 
-<hr>
-<div>
-  <div>
-    <table>
-      <tr>
-
-        <th>
-          Name
-        </th>
-
-        <th>
-          Photo
-        </th>
-
-        <th>
-          User
-        </th>
-
-        <th>
-          Friend
-        </th>
-
-        <th>
-        </th>
-      </tr>
-
-      <% @list_of_users.each do |a_user| %>
-
-      <% if a_user.id == @current_user.id %>
-
-      <% else %>
-
-      <tr>
-        <td>
-          <%= a_user.first_name + " " + a_user.last_name%>
-        </td>
-
-        <td>
-          <%= a_user.photo%>
-        </td>
-
-        <td>
-          <a href="/users/<%= a_user.id %>">
-            Show details
-          </a>
-        </td>
-
-
-        <td>
-          <% users_friends = @current_user.friends.where({ :recipient_id => a_user.id }).at(0) %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Classmate</th>
+      <th scope="col">Pumped to be in their group?</th>
+    </tr>
+  </thead>
+  <tbody>
+   <% @list_of_users.each do |a_user| %>
+  <% if a_user.id == @current_user.id %>
+    <% else %>
+    <tr>
+      <th scope="row"><%= a_user.first_name + " " + a_user.last_name%></th>
+      <td>
+        <% users_friends = @current_user.friends.where({ :recipient_id => a_user.id }).at(0) %>
 
           <% if a_user.id == @current_user.id %>
 
@@ -63,30 +24,29 @@
 
           <% if users_friends == nil %>
           <form action="/insert_friend" method = "post">
-
             <input type="hidden" name="query_recipient_id" value="<%= a_user.id %>">
-            <button>Friend this user!</button>
 
+            <button>Friend this user!</button>
           </form>
 
           <% else %>
-            <a href="/delete_friend/<%= a_user.id %>">
-              Unfriend
+            <a href="/delete_friend/<%= Friend.where({ :sender_id => @current_user.id, :recipient_id => a_user.id }).at(0).id %>">
+              <i class="far fa-grin-stars"></i>
             </a>
+
           <% end %>
           <% end %>
-          <% end %>
-        </td>
+        <% end %>
+      </td>
+
+    </tr>
+  <%end%>
+</table>
 
 
 
 
 
 
-      </tr>
-      <% end %>
-    </table>
-  </div>
-</div>
 
 <hr>

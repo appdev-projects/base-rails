@@ -1,12 +1,40 @@
-<div>
-  <div>
-    <h1>
-      List of all friends
-    </h1>
-  </div>
-</div>
+<h1>
+  Who do you like to work in groups with?
+</h1>
+
+<p></p>
+
+<%= @list_of_friends.at(0).recipient_id %>
+
+<p></P>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Classes liked</th>
+      <th scope="col">Your friend?</th>
+    </tr>
+  </thead>
+  <tbody>
+   <% Friend.all.each do |a_friend| %>
+    <tr>
+      <th scope="row"><%= a_friend.sender_id %></th>
+      <td></td>
+      <td><a href="/friends/<%= a_friend.id %>">Show details</a></td>
+    </tr>
+  <%end%>
+</table>
+
+
+
+
+ 
 
 <hr>
+
+
+
 
 <div>
   <div>
@@ -29,58 +57,3 @@
     </form>
   </div>
 </div>
-
-<hr>
-<div>
-  <div>
-    <table>
-      <tr>
-        <th>
-          ID
-        </th>
-
-        <th>
-          User
-        </th>
-
-        <th>
-          Created at
-        </th>
-
-        <th>
-          Updated at
-        </th>
-
-        <th>
-        </th>
-      </tr>
-
-      <% @list_of_friends.each do |a_friend| %>
-      <tr>
-        <td>
-          <%= a_friend.sender_id %>
-        </td>
-
-        <td>
-          <%= a_friend.recipient_id %>
-        </td>
-
-        <td>
-          <%= time_ago_in_words(a_friend.created_at) %> ago
-        </td>
-        <td>
-          <%= time_ago_in_words(a_friend.updated_at) %> ago
-        </td>
-
-        <td>
-          <a href="/friends/<%= a_friend.id %>">
-            Show details
-          </a>
-        </td>
-      </tr>
-      <% end %>
-    </table>
-  </div>
-</div>
-
-<hr>
