@@ -9,6 +9,9 @@
 #  user_id    :integer
 #
 class Like < ApplicationRecord
+  validates(:course_id, { :presence => true })
+  validates(:user_id, { :presence => true })
+  
   belongs_to(:user, { :required => false, :class_name => "User", :foreign_key => "user_id" })
 
   belongs_to(:course, { :required => false, :class_name => "Course", :foreign_key => "course_id" })

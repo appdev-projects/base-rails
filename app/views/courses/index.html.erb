@@ -9,6 +9,7 @@
       <th scope="col">Amount of group work</th>
       <th scope="col">Group size</th>
       <th scope="col">Interested in taking it?</th>
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
@@ -20,20 +21,24 @@
       <td>          <% if @current_user.present? %>
 
             <% the_like = @current_user.likes.where({ :course_id => a_course.id }).at(0) %>
-
             <% if the_like == nil %>
             <form action="/insert_like" method = "post">
               <input type="hidden" name="query_course_id" value="<%= a_course.id %>">
               <button class="btn btn-secondary" type="submit"><i class="fas fa-heart-broken"></i> Ugh</button>
             </form>
-
             <% else %>
               <a href="/delete_like/<%= the_like.id %>">
                 <button class="btn btn-primary" type="submit"><i class="fas fa-heart" color="red"></i> Yep!</button>
               </a>
             <% end %>
-          <% end %>
       </td>
+      <td>
+            <a href="/delete_course/<%= a_course.id %>">
+              <button class="btn btn-primary" type="submit"><i class="fas fa-trash"></i></button>
+            </a>
+
+      </td>
+      <% end %>
     </tr>
   <%end%>
 </table>

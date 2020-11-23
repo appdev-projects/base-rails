@@ -17,7 +17,7 @@
     <% @printable_results.each do |k,v| %>
     <tr>
       <th scope="row"><%= p k%></th>
-      <td><%= p v%></td>
+          <td><%= p v%></td>
       <td>
           <%= if Course.where({ :name => k }).at(0).group_size + 1 - v <= 0
           p "You have enough interest to fill a group!"

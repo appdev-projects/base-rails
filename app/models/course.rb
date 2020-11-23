@@ -11,7 +11,9 @@
 #
 class Course < ApplicationRecord
 
-  validates(:name, { :presence => true })
+  validates(:name, { :presence => true, :uniqueness => true })
+  validates(:group_work, { :presence => true })
+  validates(:group_size, { :presence => true })
 
   has_many(:likes, { :class_name => "Like", :foreign_key => "course_id", :dependent => :destroy })
 
