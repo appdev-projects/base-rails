@@ -112,16 +112,16 @@ if ActiveRecord::Base.connection.table_exists?("friends")
       {:id=>47, :created_at=>"2015-08-12 17:20:11", :updated_at=>"2015-08-12 17:20:11", :sender_id=>"8", :recipient_id=>"10"},
       {:id=>48, :created_at=>"2015-08-12 17:20:11", :updated_at=>"2015-08-12 17:20:11", :sender_id=>"8", :recipient_id=>"9"},
       {:id=>49, :created_at=>"2015-08-12 17:20:11", :updated_at=>"2015-08-12 17:20:11", :sender_id=>"9", :recipient_id=>"8"},
-      {:id=>50, :created_at=>"2015-08-12 17:20:11", :updated_at=>"2015-08-12 17:20:11", :sender_id=>"9", :recipient_id=>"7"}
-      {:id=>51, :created_at=>"2015-08-12 17:20:11", :updated_at=>"2015-08-12 17:20:11", :sender_id=>"9", :recipient_id=>"6"}
-      {:id=>52, :created_at=>"2015-08-12 17:20:11", :updated_at=>"2015-08-12 17:20:11", :sender_id=>"9", :recipient_id=>"5"}
-      {:id=>53, :created_at=>"2015-08-12 17:20:11", :updated_at=>"2015-08-12 17:20:11", :sender_id=>"9", :recipient_id=>"4"}
-      {:id=>54, :created_at=>"2015-08-12 17:20:11", :updated_at=>"2015-08-12 17:20:11", :sender_id=>"9", :recipient_id=>"3"}
-      {:id=>55, :created_at=>"2015-08-12 17:20:11", :updated_at=>"2015-08-12 17:20:11", :sender_id=>"10", :recipient_id=>"2"}
-      {:id=>56, :created_at=>"2015-08-12 17:20:11", :updated_at=>"2015-08-12 17:20:11", :sender_id=>"10", :recipient_id=>"1"}
-      {:id=>57, :created_at=>"2015-08-12 17:20:11", :updated_at=>"2015-08-12 17:20:11", :sender_id=>"10", :recipient_id=>"9"}
-      {:id=>58, :created_at=>"2015-08-12 17:20:11", :updated_at=>"2015-08-12 17:20:11", :sender_id=>"10", :recipient_id=>"8"}
-      {:id=>59, :created_at=>"2015-08-12 17:20:11", :updated_at=>"2015-08-12 17:20:11", :sender_id=>"10", :recipient_id=>"7"}
+      {:id=>50, :created_at=>"2015-08-12 17:20:11", :updated_at=>"2015-08-12 17:20:11", :sender_id=>"9", :recipient_id=>"7"},
+      {:id=>51, :created_at=>"2015-08-12 17:20:11", :updated_at=>"2015-08-12 17:20:11", :sender_id=>"9", :recipient_id=>"6"},
+      {:id=>52, :created_at=>"2015-08-12 17:20:11", :updated_at=>"2015-08-12 17:20:11", :sender_id=>"9", :recipient_id=>"5"},
+      {:id=>53, :created_at=>"2015-08-12 17:20:11", :updated_at=>"2015-08-12 17:20:11", :sender_id=>"9", :recipient_id=>"4"},
+      {:id=>54, :created_at=>"2015-08-12 17:20:11", :updated_at=>"2015-08-12 17:20:11", :sender_id=>"9", :recipient_id=>"3"},
+      {:id=>55, :created_at=>"2015-08-12 17:20:11", :updated_at=>"2015-08-12 17:20:11", :sender_id=>"10", :recipient_id=>"2"},
+      {:id=>56, :created_at=>"2015-08-12 17:20:11", :updated_at=>"2015-08-12 17:20:11", :sender_id=>"10", :recipient_id=>"1"},
+      {:id=>57, :created_at=>"2015-08-12 17:20:11", :updated_at=>"2015-08-12 17:20:11", :sender_id=>"10", :recipient_id=>"9"},
+      {:id=>58, :created_at=>"2015-08-12 17:20:11", :updated_at=>"2015-08-12 17:20:11", :sender_id=>"10", :recipient_id=>"8"},
+      {:id=>59, :created_at=>"2015-08-12 17:20:11", :updated_at=>"2015-08-12 17:20:11", :sender_id=>"10", :recipient_id=>"7"},
       {:id=>60, :created_at=>"2015-08-12 17:20:11", :updated_at=>"2015-08-12 17:20:11", :sender_id=>"10", :recipient_id=>"6"}
     ]
     Friend.insert_all!(friend_values)
@@ -206,7 +206,7 @@ if ActiveRecord::Base.connection.table_exists?("likes")
       {:id=>68, :course_id=>"8", :user_id=>"10", :created_at=>"2015-08-12 17:20:11", :updated_at=>"2015-08-12 17:20:11"}, 
       {:id=>69, :course_id=>"9", :user_id=>"10", :created_at=>"2015-08-12 17:20:11", :updated_at=>"2015-08-12 17:20:11"}, 
       {:id=>70, :course_id=>"10", :user_id=>"10", :created_at=>"2015-08-12 17:20:11", :updated_at=>"2015-08-12 17:20:11"}, 
-      {:id=>71, :course_id=>"11", :user_id=>"10", :created_at=>"2015-08-12 17:20:11", :updated_at=>"2015-08-12 17:20:11"}, 
+      {:id=>71, :course_id=>"11", :user_id=>"10", :created_at=>"2015-08-12 17:20:11", :updated_at=>"2015-08-12 17:20:11"}
     ]
     Like.insert_all!(like_values)
     puts "Likes have been entered into the database"
