@@ -1,11 +1,32 @@
 <h1>
   Which courses are you intersted in taking?
 </h1>
-
+<hr>
+<div class="container">
+  <%= search_form_for @q do |f| %>
+    <div class="row">
+      <div class="col-sm-left">
+        <%= f.label :name_cont, "Filter by course name:" %>
+        <%= f.text_field :name_cont, :placeholder => "Enter a few characters" %>
+        <div class="input-group-prepend">
+          <%= f.submit :class => "btn btn-outline-primary btn-block" %>
+          <button type="button" class="btn btn-outline-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="sr-only">Toggle Dropdown</span>
+          </button>
+          <div class="dropdown-menu">
+            <a href="/courses" class="btn btn-outline-primary btn-block">Clear filters</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+<p></p>
 <table class="table table-striped">
   <thead>
     <tr>
-      <th scope="col">Course</th>
+      <th scope="col">Course
+      </th>
       <th scope="col">Amount of group work</th>
       <th scope="col">Group size</th>
       <th scope="col">Interested in taking it?</th>
@@ -13,94 +34,84 @@
     </tr>
   </thead>
   <tbody>
-   <% @list_of_courses.each do |a_course| %>
-    <tr>
-      <th scope="row"><%= a_course.name %></th>
-      <td><%= a_course.group_work %></td>
-      <td><%= a_course.group_size %></td>
-      <td>          <% if @current_user.present? %>
-
+    <% @list_of_courses.each do |a_course| %>
+      <tr>
+        <th scope="row"><%= a_course.name %></th>
+        <td><%= a_course.group_work %></td>
+        <td><%= a_course.group_size %></td>
+        <td>          <% if @current_user.present? %>
             <% the_like = @current_user.likes.where({ :course_id => a_course.id }).at(0) %>
             <% if the_like == nil %>
-            <form action="/insert_like" method = "post">
-              <input type="hidden" name="query_course_id" value="<%= a_course.id %>">
-              <button class="btn btn-secondary" type="submit"><i class="fas fa-heart-broken"></i> Ugh</button>
-            </form>
+              <form action="/insert_like" method = "post">
+                <input type="hidden" name="query_course_id" value="<%= a_course.id %>">
+                <button class="btn btn-secondary" type="submit"><i class="fas fa-heart-broken"></i> Ugh</button>
+              </form>
             <% else %>
               <a href="/delete_like/<%= the_like.id %>">
                 <button class="btn btn-primary" type="submit"><i class="fas fa-heart" color="red"></i> Yep!</button>
               </a>
             <% end %>
-      </td>
-      <td>
+          </td>
+          <td>
             <a href="/delete_course/<%= a_course.id %>">
               <button class="btn btn-primary" type="submit"><i class="fas fa-trash"></i></button>
             </a>
-
-      </td>
-      <% end %>
-    </tr>
-  <%end%>
-</table>
-
-<hr>
-
-<div class="card" style="width: 21rem;">
-  <div class="card-body">
-    <h5 class="card-title">Don't see the course you want?</h5>
-    <p class="card-text">Add a new course here!</p>
-
-    <form action="/insert_course" method="post">
-      <div>
-        <label for="name_box">
-          Course name
-        </label>
-
-        <input type="text" id="name_box" name="query_name">
-      </div>
-
-      <div>
-        <label for="group_work_box">
-          Amount of group work
-        </label>
-        <select id="group_work_box" name="query_group_work">
-          <option>
-            Not much
-          </option>
-          <option>
-            Typical
-          </option>
-          <option>
-            A lot
-          </option>
-        </select>
-      </div>
-
-      <div>
-        <label for="group_size_box">
-          Group size
-        </label>
-        <select id="group_size_box" name="query_group_size">
-          <option>
-            0
-          </option>
-          <option>
-            2
-          </option>
-          <option>
-            3
-          </option>
-          <option>
-            4
-          </option>
-          <option>
-            5
-          </option>
-        </select>
-      </div>
-
-      <button class="btn btn-primary">Add course</button>
-    </form>
-
+          </td>
+        <% end %>
+      </tr>
+    <%end%>
+  </table>
+  <hr>
+  <div class="card" style="width: 21rem;">
+    <div class="card-body">
+      <h5 class="card-title">Don't see the course you want?</h5>
+      <p class="card-text">Add a new course here!</p>
+      <form action="/insert_course" method="post">
+        <div>
+          <label for="name_box">
+            Course name
+          </label>
+          <input type="text" id="name_box" name="query_name">
+        </div>
+        <div>
+          <label for="group_work_box">
+            Amount of group work
+          </label>
+          <select id="group_work_box" name="query_group_work">
+            <option>
+              Not much
+            </option>
+            <option>
+              Typical
+            </option>
+            <option>
+              A lot
+            </option>
+          </select>
+        </div>
+        <div>
+          <label for="group_size_box">
+            Group size
+          </label>
+          <select id="group_size_box" name="query_group_size">
+            <option>
+              0
+            </option>
+            <option>
+              2
+            </option>
+            <option>
+              3
+            </option>
+            <option>
+              4
+            </option>
+            <option>
+              5
+            </option>
+          </select>
+        </div>
+        <button class="btn btn-primary">Add course</button>
+      </form>
+    </div>
   </div>
-</div>

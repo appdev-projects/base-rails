@@ -1,8 +1,15 @@
 class UsersController < ApplicationController
 
   def index
-    all_users = User.all
-    @list_of_users = all_users.order({ :first_name => :desc })
+
+    # Ransack
+
+    @q = User.ransack(params[:q])
+    @all_users = @q.result
+
+    #
+
+    @list_of_users = @all_users.order({ :first_name => :desc })
     
     render({ :template => "users/index.html.erb" })
   end

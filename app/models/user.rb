@@ -29,5 +29,11 @@ class User < ApplicationRecord
     return combined_name
   end
 
+  # Allow ransack to search full name, not just be confined to first or last name
+  
+  ransacker :full_name do |parent|
+    Arel::Nodes::InfixOperation.new('||',
+      parent.table[:first_name], parent.table[:last_name])
+  end
 
 end
