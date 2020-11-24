@@ -38,10 +38,10 @@
           <th scope="row"><%= a_user.first_name + " " + a_user.last_name%></th>
           <% users_friends = @current_user.friends.where({ :recipient_id => a_user.id }).at(0) %>
           <td>
-            <%= if users_friends == nil
+            <% if users_friends == nil
               else
                 a_user.courses.pluck(:name).sort.each do |a|
-        %>
+            %>
             <ul>
               <li><%= a %></li>
             </ul>
