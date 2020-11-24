@@ -9,13 +9,13 @@ Rails.application.routes.draw do
   post("/insert_like", { :controller => "likes", :action => "create" })
           
   # READ
-  get("/likes", { :controller => "likes", :action => "index" })
+  # get("/likes", { :controller => "likes", :action => "index" })
   
-  get("/likes/:path_id", { :controller => "likes", :action => "show" })
+  # get("/likes/:path_id", { :controller => "likes", :action => "show" })
   
   # UPDATE
   
-  post("/modify_like/:path_id", { :controller => "likes", :action => "update" })
+  # post("/modify_like/:path_id", { :controller => "likes", :action => "update" })
   
   # DELETE
   get("/delete_like/:path_id", { :controller => "likes", :action => "destroy" })
@@ -28,13 +28,13 @@ Rails.application.routes.draw do
   post("/insert_friend", { :controller => "friends", :action => "create" })
           
   # READ
-  get("/friends", { :controller => "friends", :action => "index" })
+  # get("/friends", { :controller => "friends", :action => "index" })
   
-  get("/friends/:path_id", { :controller => "friends", :action => "show" })
+  # get("/friends/:path_id", { :controller => "friends", :action => "show" })
   
   # UPDATE
   
-  post("/modify_friend/:path_id", { :controller => "friends", :action => "update" })
+  # post("/modify_friend/:path_id", { :controller => "friends", :action => "update" })
   
   # DELETE
   get("/delete_friend/:path_id", { :controller => "friends", :action => "destroy" })
@@ -49,11 +49,11 @@ Rails.application.routes.draw do
   # READ
   get("/courses", { :controller => "courses", :action => "index" })
   
-  get("/courses/:path_id", { :controller => "courses", :action => "show" })
+  # get("/courses/:path_id", { :controller => "courses", :action => "show" })
   
   # UPDATE
   
-  post("/modify_course/:path_id", { :controller => "courses", :action => "update" })
+  # post("/modify_course/:path_id", { :controller => "courses", :action => "update" })
   
   # DELETE
   get("/delete_course/:path_id", { :controller => "courses", :action => "destroy" })
@@ -68,9 +68,9 @@ Rails.application.routes.draw do
   post("/insert_user", { :controller => "user_authentication", :action => "create"  })
       
   # EDIT PROFILE FORM        
-  get("/edit_user_profile", { :controller => "user_authentication", :action => "edit_profile_form" })       
+  # get("/edit_user_profile", { :controller => "user_authentication", :action => "edit_profile_form" })       
   # UPDATE RECORD
-  post("/modify_user", { :controller => "user_authentication", :action => "update" })
+  # post("/modify_user", { :controller => "user_authentication", :action => "update" })
   
   # DELETE RECORD
   get("/cancel_user_account", { :controller => "user_authentication", :action => "destroy" })
@@ -93,14 +93,14 @@ Rails.application.routes.draw do
   get("/users", { :controller => "users", :action => "index" })        
   
   # USER DETAILS
-  get("/users/:path_id", { :controller => "users", :action => "show" })        
+  # get("/users/:path_id", { :controller => "users", :action => "show" })        
 
   # INVITE USER
   post("/invite_user", { :controller => "users", :action => "invite_user" })
 
   #------------------------------
 
-    # Routes for the Results list:
+  # Routes for the Results list:
 
   # RESULTS LIST
   get("/results", { :controller => "results", :action => "index" })        

@@ -6,6 +6,7 @@
   <thead>
     <tr>
       <th scope="col">Classmate</th>
+      <th scope="col">What are they interested in?</th>
       <th scope="col">Pumped to be in their group?</th>
     </tr>
   </thead>
@@ -15,16 +16,29 @@
     <% else %>
     <tr>
       <th scope="row"><%= a_user.first_name + " " + a_user.last_name%></th>
+
+      <% users_friends = @current_user.friends.where({ :recipient_id => a_user.id }).at(0) %>
+
       <td>
-        <% users_friends = @current_user.friends.where({ :recipient_id => a_user.id }).at(0) %>
+        <%= if users_friends == nil
+              else
+                a_user.courses.pluck(:name).sort.each do |a|
+        %>
+        <ul>
+          <li><%= a %></li>
+        </ul>
+
+          <%end%>
+        <%end%>
+      </td>
+
+      <td>
 
           <% if a_user.id == @current_user.id %>
 
           <% else %>
 
           <% if users_friends == nil %>
-
-
 
             <form action="/insert_friend" method = "post">
               <input type="hidden" name="query_recipient_id" value="<%= a_user.id %>">
@@ -39,6 +53,7 @@
           <% end %>
           <% end %>
         <% end %>
+        
       </td>
     </tr>
   <%end%>

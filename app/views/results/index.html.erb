@@ -19,10 +19,10 @@
       <th scope="row"><%= p k%></th>
           <td><%= p v%></td>
       <td>
-          <%= if Course.where({ :name => k }).at(0).group_size + 1 - v <= 0
-          p "You have enough interest to fill a group!"
+          <%= if Course.where({ :name => k }).at(0).group_size - 1 - v <= 0
+          p "\u{1F604} You have enough interest to fill a group!"
           else
-          p "You only need #{Course.where({ :name => k }).at(0).group_size + 1 - v} more friends to fill a group!"
+          p "You only need #{Course.where({ :name => k }).at(0).group_size - 1 - v} more friends to fill a group!"
           end%>
       </td>
     <%end%>
