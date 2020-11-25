@@ -28,7 +28,7 @@ class UsersController < ApplicationController
     sms_parameters = {
     :from => @twilio_sending_number,
     :to => @to,
-    :body => "Hi! #{@current_user.full_name} wants to coordinate their Booth courses with you. Join them here! https://rb.gy/gzm7pz"
+    :body => "Hi! #{@current_user.full_name} wants to coordinate their Booth courses with you. Join them here! https://coursesxgroup.herokuapp.com/"
     }
 
     @twilio_client.api.account.messages.create(sms_parameters)
