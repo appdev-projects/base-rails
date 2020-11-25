@@ -23,6 +23,7 @@ class UsersController < ApplicationController
     @twilio_sending_number = ENV.fetch("TWILIO_SENDING_PHONE_NUMBER")
     @twilio_client = Twilio::REST::Client.new(@twilio_sid, @twilio_token)
     @to= "+1" + params.fetch(:to)
+    @alert_text = "alert_text"
 
     sms_parameters = {
     :from => @twilio_sending_number,
@@ -32,6 +33,7 @@ class UsersController < ApplicationController
 
     @twilio_client.api.account.messages.create(sms_parameters)
 
-    render({ :template => "users/index.html.erb" })
+    redirect_to("/users", { :alert => "The text message was sent!" })
+
   end
 end
