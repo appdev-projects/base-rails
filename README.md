@@ -1,5 +1,5 @@
 # Base Rails
-
+test
 ## Standard Workflow
 
  1. Start the web server by running `bin/server`.
