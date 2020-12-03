@@ -2,7 +2,7 @@ class CoursesController < ApplicationController
 
   def index    
     
-    # Ransack
+    # Ransack gem
 
     @q = Course.ransack(params[:q])
     @matching_courses = @q.result
