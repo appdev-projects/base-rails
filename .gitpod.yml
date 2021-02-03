@@ -1,4 +1,4 @@
-image: jelaniwoods/appdev2020summer-base-rails
+image: jelaniwoods/appdev2021-base-rails
 
 tasks:
   - init: bin/setup 
