@@ -22,7 +22,6 @@ GIT
     web_git (0.1.0)
       actionview
       diffy
-      git
       sinatra
       tzinfo-data
 
@@ -186,7 +185,7 @@ GEM
     marcel (0.3.3)
       mimemagic (~> 0.3.2)
     method_source (1.0.0)
-    mimemagic (0.3.10)
+    mimemagic (0.3.8)
       nokogiri (~> 1)
       rake
     mini_mime (1.0.2)
