@@ -72,7 +72,7 @@ RUN /bin/bash -l -c "gem install rufo"
 
 WORKDIR /base-rails
 COPY Gemfile /base-rails/Gemfile
-COPY Gemfile.lock /base-rails/Gemfile.lock
+COPY --chown=gitpod:gitpod Gemfile.lock /base-rails/Gemfile.lock
 RUN /bin/bash -l -c "gem install bundler:2.1.4"
 # USER root
 # RUN mkdir /workspace && chmod 755 /workspace
@@ -91,3 +91,39 @@ RUN sudo apt install -y postgresql postgresql-contrib libpq-dev psmisc lsof
 USER gitpod
 RUN echo "rvm use 2.6.6" >> ~/.bashrc
 RUN echo "rvm_silence_path_mismatch_check_flag=1" >> ~/.rvmrc
+
+COPY install-packages /usr/bin
+### Python ###
+LABEL dazzle/layer=lang-python
+LABEL dazzle/test=tests/lang-python.yaml
+USER gitpod
+RUN sudo install-packages python3-pip
+
+ENV PATH=$HOME/.pyenv/bin:$HOME/.pyenv/shims:$PATH
+RUN curl -fsSL https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash \
+    && { echo; \
+        echo 'eval "$(pyenv init -)"'; \
+        echo 'eval "$(pyenv virtualenv-init -)"'; } >> /home/gitpod/.bashrc.d/60-python \
+    && pyenv update \
+    && pyenv install 3.7.6 \
+    && pyenv global 3.7.6 \
+    && python3 -m pip install --no-cache-dir --upgrade pip \
+    && python3 -m pip install --no-cache-dir --upgrade \
+        setuptools wheel virtualenv pipenv pylint rope flake8 \
+        mypy autopep8 pep8 pylama pydocstyle bandit notebook \
+        twine \
+    && sudo rm -rf /tmp/*
+# Gitpod will automatically add user site under `/workspace` to persist your packages.
+# ENV PYTHONUSERBASE=/workspace/.pip-modules \
+#    PIP_USER=yes
+
+## R ##
+RUN sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9 \
+    && sudo add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu xenial-cran35/' \
+    && sudo apt update \
+    && sudo apt install -y r-base r-base-core r-recommended
+
+# sudo apt install r-base r-base-core r-recommended
+
+# RUN sudo apt-get update && sudo apt-get install -y r-base=3.6.1
+
