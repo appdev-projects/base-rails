@@ -1,4 +1,6 @@
 Rails.application.configure do
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  
   config.hosts.clear
   path = Rails.root.join("whitelist.yml")
   default_whitelist_path = Rails.root.join("default_whitelist.yml")

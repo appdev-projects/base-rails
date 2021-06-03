@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @arcade.name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @arcade.address %>
+</p>
+
+<%= link_to 'Edit', edit_arcade_path(@arcade) %> |
+<%= link_to 'Back', arcades_path %>

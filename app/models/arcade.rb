@@ -1,0 +1,2 @@
+class Arcade < ApplicationRecord
+end

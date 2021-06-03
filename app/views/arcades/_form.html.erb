@@ -1,0 +1,27 @@
+<%= form_with(model: arcade, local: true) do |form| %>
+  <% if arcade.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(arcade.errors.count, "error") %> prohibited this arcade from being saved:</h2>
+
+      <ul>
+        <% arcade.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :address %>
+    <%= form.text_area :address %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
