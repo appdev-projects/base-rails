@@ -1,5 +1,5 @@
-# Final - Acardes 
+# Final - Arcades 
 
-### This is an app that will list local acardes and the games that they hav.  Users will be able to create favorites and added comments.  
+### This is an app that will list local Arcades and the games that they have.  Users will be able to create favorites and added comments.  
 
-### I hoped to add native app compents to this project, but ran out of time.
+### Note - I originally hoped to add native app components to this project, but ran out of time.
