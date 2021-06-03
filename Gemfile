@@ -15,6 +15,8 @@ gem 'sassc-rails'
 
 gem 'faker'
 
+gem 'devise'
+
 group :development do
   gem 'listen', '~> 3.2'
   gem 'spring-watcher-listen', '~> 2.0.0'
