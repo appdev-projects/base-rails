@@ -18,4 +18,5 @@
 #  owner_id  (owner_id => users.id)
 #
 class Arcade < ApplicationRecord
+    belongs_to :owner, class_name: "User"
 end
