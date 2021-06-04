@@ -68,8 +68,21 @@ task sample_data: :environment do
     end
   end
 
-  
+  arcades = Arcade.all
+  games = Game.all
 
+  arcades.each do |arcade|
+    games.each do |game|
+      if rand < 0.25
+        new_machine = arcade.machines.create(
+          game: game,
+          number_of_machines: 1
+        )
+
+        p new_machine.errors.full_messages
+      end
+    end
+  end
 
 
 

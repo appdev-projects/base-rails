@@ -20,8 +20,8 @@
 #  game_id    (game_id => games.id)
 #
 class Machine < ApplicationRecord
-  belongs_to :arcade, counter_cache: true
-  belongs_to :game, counter_cache: true
+  belongs_to :arcade
+  belongs_to :game
 
   validates :arcade_id, uniqueness: { scope: :game_id, message: "has already registered this game" }
 end
