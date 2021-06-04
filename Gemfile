@@ -13,7 +13,7 @@ gem 'rails', '~> 6.0.3', '>= 6.0.3.2'
 gem 'sprockets', '< 4'
 gem 'sassc-rails'
 
-gem 'faker'
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 
 gem 'devise'
 
