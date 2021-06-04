@@ -2,11 +2,12 @@
 #
 # Table name: machines
 #
-#  id         :integer          not null, primary key
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  arcade_id  :integer          not null
-#  game_id    :integer          not null
+#  id                 :integer          not null, primary key
+#  number_of_machines :integer
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  arcade_id          :integer          not null
+#  game_id            :integer          not null
 #
 # Indexes
 #

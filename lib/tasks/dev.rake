@@ -68,9 +68,11 @@ task sample_data: :environment do
     end
   end
 
-
-
   
+
+
+
+
   ending = Time.now
   p "It took #{(ending - starting).to_i} seconds to create sample data."
   p "There are now #{User.count} users."
