@@ -64,26 +64,13 @@ task sample_data: :environment do
         name: Faker::Company.name,
         address: Faker::Address.full_address
       )
-
       p arcade.errors.full_messages
-
-        # user.followers.each do |follower|
-        #   if rand < 0.5
-        #     photo.fans << follower
-        #   end
-
-        #   if rand < 0.25
-        #     comment = photo.comments.create(
-        #       body: Faker::Quote.jack_handey,
-        #       author: follower
-        #     )
-
-        #     p comment.errors.full_messages
-        #   end
-        # end
     end
   end
 
+
+
+  
   ending = Time.now
   p "It took #{(ending - starting).to_i} seconds to create sample data."
   p "There are now #{User.count} users."

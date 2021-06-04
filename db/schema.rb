@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_04_030759) do
+ActiveRecord::Schema.define(version: 2021_06_04_032530) do
 
   create_table "arcades", force: :cascade do |t|
     t.string "name"
@@ -48,6 +48,15 @@ ActiveRecord::Schema.define(version: 2021_06_04_030759) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "machines", force: :cascade do |t|
+    t.integer "arcade_id", null: false
+    t.integer "game_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["arcade_id"], name: "index_machines_on_arcade_id"
+    t.index ["game_id"], name: "index_machines_on_game_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -71,4 +80,6 @@ ActiveRecord::Schema.define(version: 2021_06_04_030759) do
   add_foreign_key "comments", "users", column: "author_id"
   add_foreign_key "favorites", "games"
   add_foreign_key "favorites", "users", column: "fan_id"
+  add_foreign_key "machines", "arcades"
+  add_foreign_key "machines", "games"
 end

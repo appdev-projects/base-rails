@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :machines
   resources :favorites
   resources :comments
   root "arcades#index"

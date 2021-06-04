@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Arcade:</strong>
+  <%= @machine.arcade_id %>
+</p>
+
+<p>
+  <strong>Game:</strong>
+  <%= @machine.game_id %>
+</p>
+
+<%= link_to 'Edit', edit_machine_path(@machine) %> |
+<%= link_to 'Back', machines_path %>
