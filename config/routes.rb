@@ -9,4 +9,8 @@ Rails.application.routes.draw do
   resources :arcades
   resources :games
   
+  get ":username" => "users#show", as: :user
+  get ":username/feed" => "users#feed", as: :feed
+
+
 end

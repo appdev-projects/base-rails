@@ -16,23 +16,17 @@
               Feed
             <% end %>
           </li>
-          <li class="nav-item">
-            <%= link_to discover_path(current_user.username), class: "nav-link" do %>
-              <i class="fas fa-compass fa-fw"></i>
-
-              Discover 
-            <% end %>
-          </li>
+          
         <% end %>
       </ul>
 
       <ul class="navbar-nav">
         <% if user_signed_in? %>
           <li class="nav-item">
-            <%= link_to new_photo_path, class: "nav-link" do %>
+            <%= link_to new_arcade_path, class: "nav-link" do %>
               <i class="fas fa-plus-circle"></i>
 
-              Add post
+              Own an Arcade? Add it here!
             <% end %>
           </li>
           <li class="nav-item">
