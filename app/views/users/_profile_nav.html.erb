@@ -1,0 +1,28 @@
+<ul class="nav nav-tabs nav-justified mb-1">    
+  <li class="nav-item">
+    <%=
+      active_link_to user_path(user.username),
+        class: "nav-link",
+        active: :exclusive do %>
+      
+      Posts
+      
+      <span class="badge badge-pill badge-secondary">
+        <%= user.own_arcades.count %>
+      </span>
+    <% end %>
+  </li>
+
+  <li class="nav-item">
+    <%=
+      active_link_to liked_path(user.username),
+        class: "nav-link" do %>
+
+      Liked
+      
+      <span class="badge badge-pill badge-secondary">
+        <%= user.favorites.count %>
+      </span>
+    <% end %>
+  </li>
+</ul> 

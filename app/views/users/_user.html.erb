@@ -1,0 +1,23 @@
+<div class="media">
+
+  <div class="media-body">
+    <div class="d-flex justify-content-between align-items-center">
+      <h1 class="mt-0 mb-3 display-4">
+        <%= user.username %>
+      </h1>
+
+      <div>
+        <span class="badge badge-secondary">
+          <%= user.private? ? "Private" : "Public" %>
+        </span>
+      </div>
+    </div>
+
+     
+      
+    <h3 class="h5">
+      <%= user.name %>
+    </h3>
+
+  </div>
+</div>

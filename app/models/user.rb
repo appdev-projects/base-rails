@@ -36,4 +36,14 @@ class User < ApplicationRecord
 
   has_many :favorited_games, through: :favorites, source: :game
 
+  validates :username,
+    presence: true,
+    uniqueness: true,
+    format: { 
+      with: /\A[\w_\.]+\z/i,
+      message: "can only contain letters, numbers, periods, and underscores"
+    }
+
+
+
 end

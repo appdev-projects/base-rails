@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/faker-ruby/faker.git
-  revision: e1bd4a5a57775b724e8441ffa14cce0861b5a4b6
+  revision: f3a2653bc396fdb87b2664adb7cce05e60bbf8b3
   branch: master
   specs:
     faker (2.18.0)
@@ -217,6 +217,8 @@ GEM
     rack (2.2.3)
     rack-protection (2.1.0)
       rack
+    rack-proxy (0.7.0)
+      rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (6.0.3.7)
@@ -299,6 +301,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    semantic_range (3.0.0)
     simple_form (5.1.0)
       actionpack (>= 5.2)
       activemodel (>= 5.2)
@@ -325,6 +328,9 @@ GEM
     thor (1.1.0)
     thread_safe (0.3.6)
     tilt (2.0.10)
+    turbolinks (5.2.1)
+      turbolinks-source (~> 5.2)
+    turbolinks-source (5.2.0)
     tzinfo (1.2.9)
       thread_safe (~> 0.1)
     tzinfo-data (1.2021.1)
@@ -344,6 +350,11 @@ GEM
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
+    webpacker (5.4.0)
+      activesupport (>= 5.2)
+      rack-proxy (>= 0.6.1)
+      railties (>= 5.2)
+      semantic_range (>= 2.3.0)
     websocket-driver (0.7.4)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -386,9 +397,11 @@ DEPENDENCIES
   sprockets (< 4)
   sqlite3 (~> 1.4.1)
   table_print
+  turbolinks (~> 5)
   web-console (>= 3.3.0)
   web_git!
   webmock
+  webpacker (~> 5.0)
 
 RUBY VERSION
    ruby 2.6.6p146
