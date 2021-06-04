@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_03_223251) do
+ActiveRecord::Schema.define(version: 2021_06_04_001946) do
 
   create_table "arcades", force: :cascade do |t|
     t.string "name"
@@ -19,6 +19,25 @@ ActiveRecord::Schema.define(version: 2021_06_03_223251) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["owner_id"], name: "index_arcades_on_owner_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.integer "author_id", null: false
+    t.integer "arcade_id", null: false
+    t.text "body"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["arcade_id"], name: "index_comments_on_arcade_id"
+    t.index ["author_id"], name: "index_comments_on_author_id"
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "fan_id", null: false
+    t.integer "game_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["fan_id"], name: "index_favorites_on_fan_id"
+    t.index ["game_id"], name: "index_favorites_on_game_id"
   end
 
   create_table "games", force: :cascade do |t|
@@ -47,4 +66,8 @@ ActiveRecord::Schema.define(version: 2021_06_03_223251) do
   end
 
   add_foreign_key "arcades", "users", column: "owner_id"
+  add_foreign_key "comments", "arcades"
+  add_foreign_key "comments", "users", column: "author_id"
+  add_foreign_key "favorites", "games"
+  add_foreign_key "favorites", "users", column: "fan_id"
 end
