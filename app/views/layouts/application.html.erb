@@ -1,21 +1,34 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>FinalProject</title>
+    <title>Arcade Fun!</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
-
-    <!-- Expand the number of characters we can use in the document beyond basic ASCII 🎉 -->
-    <meta charset="utf-8">
-
-    <!-- Make it responsive to small screens -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= render "shared/cdn_assets" %>
 
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    
   </head>
 
   <body>
-    <%= yield %>
+    <%= render "shared/navbar" %>
+    
+    <div class="container">
+      <div class="row mb-4">
+        <div class="col-md-6 offset-md-3">
+          <% if notice.present? %>
+            <%= render "shared/flash", message: notice, css_class: "success" %>
+          <% end %>
+
+          <% if alert.present? %>
+            <%= render "shared/flash", message: alert, css_class: "danger" %>
+          <% end %>
+        </div>
+      </div>
+
+      <%= yield %>
+    </div>
   </body>
 </html>
