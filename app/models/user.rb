@@ -6,7 +6,7 @@
 #  comments_count         :integer          default(0)
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
-#  favorite_count         :integer          default(0)
+#  favorites_count        :integer          default(0)
 #  name                   :string
 #  private                :boolean
 #  remember_created_at    :datetime

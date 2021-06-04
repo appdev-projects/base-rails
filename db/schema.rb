@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_04_033415) do
+ActiveRecord::Schema.define(version: 2021_06_04_044209) do
 
   create_table "arcades", force: :cascade do |t|
     t.string "name"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2021_06_04_033415) do
     t.integer "owner_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "comments_count", default: 0
     t.index ["owner_id"], name: "index_arcades_on_owner_id"
   end
 
@@ -46,6 +47,7 @@ ActiveRecord::Schema.define(version: 2021_06_04_033415) do
     t.string "release_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "favorites_count", default: 0
   end
 
   create_table "machines", force: :cascade do |t|
@@ -66,7 +68,7 @@ ActiveRecord::Schema.define(version: 2021_06_04_033415) do
     t.datetime "remember_created_at"
     t.string "username"
     t.boolean "private"
-    t.integer "favorite_count", default: 0
+    t.integer "favorites_count", default: 0
     t.integer "comments_count", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

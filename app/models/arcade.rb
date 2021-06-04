@@ -2,12 +2,13 @@
 #
 # Table name: arcades
 #
-#  id         :integer          not null, primary key
-#  address    :text
-#  name       :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  owner_id   :integer          not null
+#  id             :integer          not null, primary key
+#  address        :text
+#  comments_count :integer          default(0)
+#  name           :string
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  owner_id       :integer          not null
 #
 # Indexes
 #

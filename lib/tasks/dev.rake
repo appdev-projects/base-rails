@@ -3,6 +3,9 @@ task sample_data: :environment do
   p "creating data"
   starting = Time.now
 
+    Comment.delete_all
+    Favorite.delete_all
+    Machine.delete_all
     Game.delete_all
     Arcade.delete_all
     User.delete_all
@@ -78,8 +81,30 @@ task sample_data: :environment do
           game: game,
           number_of_machines: 1
         )
-
         p new_machine.errors.full_messages
+      end
+    end
+  end
+
+  users.each do |user|
+    games.each do |game|
+      if rand < 0.20
+        new_fav = user.favorites.create(
+          game: game,
+        )
+        p new_fav.errors.full_messages
+      end
+    end
+  end
+
+  users.each do |user|
+    arcades.each do |arcade|
+      if rand < 0.20
+        new_comment = user.comments.create(
+          arcade: arcade,
+          body: Faker::Quote.jack_handey
+        )
+        p new_comment.errors.full_messages
       end
     end
   end
@@ -91,6 +116,8 @@ task sample_data: :environment do
   p "There are now #{User.count} users."
   p "There are now #{Arcade.count} arcades."
   p "There are now #{Game.count} games."
+  p "There are now #{Machine.count} machines."
+  p "There are now #{Favorite.count} favorites."
+  p "There are now #{Comment.count} comments."
 
-  
 end  
