@@ -1,8 +1,11 @@
 desc "Hydrate the database with some sample data to look at so that developing is easier"
 task sample_data: :environment do
+  p "creating data"
   starting = Time.now
 
-  User.delete_all
+    Game.delete_all
+    Arcade.delete_all
+    User.delete_all
 
   people = Array.new(10) do
     {
@@ -30,14 +33,36 @@ task sample_data: :environment do
     p user.errors.full_messages
   end
   
-  
+  games = Array.new(50) do
+    {
+      title: Faker::Game.title,
+      release_date: Faker::Date.between(from: '1970-01-01', to: '2020-12-01'),
+      description: Faker::Lorem.paragraph(
+        sentence_count: 2,
+        supplemental: true,
+        random_sentences_to_add: 2
+      )
+    }
+  end
+
+  games.each do |game|
+
+    game = Game.create(
+      title: "#{game[:title]}",
+      release_date: "#{game[:release_date]}",
+      description: "#{game[:description]}",
+    )
+
+    p game.errors.full_messages
+  end
+
   users = User.all
 
   users.each do |user|
-    rand(5).times do
+    rand(2).times do
       arcade = user.own_arcades.create(
-        name: Faker::Business,
-        address: Faker::Address
+        name: Faker::Company.name,
+        address: Faker::Address.full_address
       )
 
       p arcade.errors.full_messages
@@ -63,7 +88,7 @@ task sample_data: :environment do
   p "It took #{(ending - starting).to_i} seconds to create sample data."
   p "There are now #{User.count} users."
   p "There are now #{Arcade.count} arcades."
-
+  p "There are now #{Game.count} games."
 
   
 end  
