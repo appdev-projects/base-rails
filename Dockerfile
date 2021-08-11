@@ -57,8 +57,8 @@ RUN curl -sSL https://rvm.io/mpapis.asc | gpg --import - \
     && curl -fsSL https://get.rvm.io | bash -s stable \
     && bash -lc " \
         rvm requirements \
-        && rvm install 2.6.6 \
-        && rvm use 2.6.6 --default \
+        && rvm install 2.7.3 \
+        && rvm use 2.7.3 --default \
         && rvm rubygems current \
         && gem install bundler --no-document \
         && gem install solargraph --no-document" \
@@ -73,7 +73,7 @@ RUN /bin/bash -l -c "gem install rufo"
 WORKDIR /base-rails
 COPY Gemfile /base-rails/Gemfile
 COPY --chown=gitpod:gitpod Gemfile.lock /base-rails/Gemfile.lock
-RUN /bin/bash -l -c "gem install bundler:2.1.4"
+RUN /bin/bash -l -c "gem install bundler:1.17.3"
 # USER root
 # RUN mkdir /workspace && chmod 755 /workspace
 USER gitpod
@@ -89,7 +89,7 @@ RUN /bin/bash -l -c "curl https://cli-assets.heroku.com/install.sh | sh"
 # RUN sudo apt-get update && sudo apt-get install -y yarn
 RUN sudo apt install -y postgresql postgresql-contrib libpq-dev psmisc lsof
 USER gitpod
-RUN echo "rvm use 2.6.6" >> ~/.bashrc
+RUN echo "rvm use 2.7.3" >> ~/.bashrc
 RUN echo "rvm_silence_path_mismatch_check_flag=1" >> ~/.rvmrc
 
 COPY install-packages /usr/bin
