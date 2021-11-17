@@ -15,7 +15,8 @@ Rails.application.configure do
   config.web_console.permissions = whitelisted_ips
   config.web_console.whiny_requests = false
 
-  BetterErrors::Middleware.allow_ip! '10.138.0.0/16'
+  config.web_console.whitelisted_ips = '0.0.0.0/0.0.0.0'
+  BetterErrors::Middleware.allow_ip! '0.0.0.0/0.0.0.0'
 
   config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
   # Settings specified here will take precedence over those in config/application.rb.

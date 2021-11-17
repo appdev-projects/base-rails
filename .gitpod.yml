@@ -12,5 +12,3 @@ vscode:
   extensions:
     - shd101wyy.markdown-preview-enhanced
     - wingrunr21.vscode-ruby
-    - mbessey.vscode-rufo
-    - aliariff.vscode-erb-beautify
