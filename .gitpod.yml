@@ -12,3 +12,4 @@ vscode:
   extensions:
     - shd101wyy.markdown-preview-enhanced
     - wingrunr21.vscode-ruby
+    - vortizhe.simple-ruby-erb
