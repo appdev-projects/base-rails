@@ -1,7 +1,9 @@
 image: jelaniwoods/appdev2021-base-rails-hotfix
 tasks:
-  - command: bundle install
+  - before: rvm install 2.7.3
+  - before: bundle update --bundler  
   - init: bin/setup
+  - command: bin/server
 ports:
   - port: 3000
     onOpen: open-preview
