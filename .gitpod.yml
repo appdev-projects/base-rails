@@ -1,9 +1,9 @@
 image: jelaniwoods/appdev2021-base-rails-hotfix
 tasks:
-  - before: rvm install 2.7.3
-  - before: bundle update --bundler  
-  - init: bin/setup
-  - command: bin/server
+  - name: start server
+    before: rvm install 2.7.3 && bundle update --bundler  
+    init: bin/setup
+    command: bin/server
 ports:
   - port: 3000
     onOpen: open-preview
@@ -14,3 +14,20 @@ vscode:
     - shd101wyy.markdown-preview-enhanced
     - wingrunr21.vscode-ruby
     - vortizhe.simple-ruby-erb
+
+github:
+  prebuilds:
+    # enable for the default branch (defaults to true)
+    master: true
+    # enable for all branches in this repo (defaults to false)
+    branches: true
+    # enable for pull requests coming from this repo (defaults to true)
+    pullRequests: true
+    # enable for pull requests coming from forks (defaults to false)
+    pullRequestsFromForks: true
+    # add a check to pull requests (defaults to true)
+    addCheck: true
+    # add a "Review in Gitpod" button as a comment to pull requests (defaults to false)
+    addComment: true
+    # add a "Review in Gitpod" button to the pull request's description (defaults to false)
+    addBadge: true
