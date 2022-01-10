@@ -6,9 +6,12 @@ ports:
   - port: 3000
     onOpen: open-preview
     visibility: public
+  - port: 9515
+    onOpen: ignore
 
 vscode:
   extensions:
-    - shd101wyy.markdown-preview-enhanced
-    - wingrunr21.vscode-ruby
     - vortizhe.simple-ruby-erb
+    - mbessey.vscode-rufo
+    - aliariff.vscode-erb-beautify
+
