@@ -1,4 +1,4 @@
-image: jelaniwoods/appdev2021-base-rails-hotfix
+image: jelaniwoods/appdev2022-base-rails:winter-test
 tasks:
   - command: bundle install
   - init: bin/setup

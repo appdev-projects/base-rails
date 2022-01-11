@@ -16,7 +16,9 @@ gem 'sassc-rails'
 gem 'faker'
 
 group :development do
+  gem 'htmlbeautifier'
   gem 'listen', '~> 3.2'
+  gem 'rufo'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'spring'
   gem 'web-console', '>= 3.3.0'
