@@ -1,17 +1,16 @@
-image: jelaniwoods/appdev2022-base-rails:winter-test
+image: patrickmckernin/baserails2022winter
+
 tasks:
-  - command: bundle install
   - init: bin/setup
 ports:
   - port: 3000
     onOpen: open-preview
-    visibility: public
   - port: 9515
     onOpen: ignore
+
 
 vscode:
   extensions:
     - vortizhe.simple-ruby-erb
     - mbessey.vscode-rufo
     - aliariff.vscode-erb-beautify
-

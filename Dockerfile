@@ -67,63 +67,40 @@ RUN echo "rvm_gems_path=/home/gitpod/.rvm" > ~/.rvmrc
 
 USER gitpod
 # AppDev stuff
-RUN /bin/bash -l -c "gem install htmlbeautifier"
-RUN /bin/bash -l -c "gem install rufo"
 
 WORKDIR /base-rails
+
+# Install Google Chrome
+RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - 
+RUN sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+RUN sudo apt-get -y update
+RUN sudo apt-get -y install google-chrome-stable
+# Install Chromedriver
+RUN sudo apt-get -y install google-chrome-stable
+RUN wget https://chromedriver.storage.googleapis.com/2.41/chromedriver_linux64.zip
+RUN unzip chromedriver_linux64.zip
+
+RUN sudo mv chromedriver /usr/bin/chromedriver
+RUN sudo chown root:root /usr/bin/chromedriver
+RUN sudo chmod +x /usr/bin/chromedriver
+
 COPY Gemfile /base-rails/Gemfile
 COPY --chown=gitpod:gitpod Gemfile.lock /base-rails/Gemfile.lock
-RUN /bin/bash -l -c "gem install bundler:1.17.3"
-# USER root
-# RUN mkdir /workspace && chmod 755 /workspace
+RUN /bin/bash -l -c "gem install bundler:2.1.4"
+
 USER gitpod
 
 RUN /bin/bash -l -c "bundle install"
 
 RUN /bin/bash -l -c "curl https://cli-assets.heroku.com/install.sh | sh"
 
-# RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-# RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 
-# # RUN sudo apt-get update && sudo apt-get install -y nodejs yarn postgresql-client
+RUN sudo apt-get update && sudo apt-get install -y nodejs yarn
+#  postgresql-client
 # RUN sudo apt-get update && sudo apt-get install -y yarn
-RUN sudo apt install -y postgresql postgresql-contrib libpq-dev psmisc lsof
+RUN sudo apt install -y postgresql postgresql-contrib libpq-dev psmisc lsof expect
 USER gitpod
 RUN echo "rvm use 2.7.3" >> ~/.bashrc
 RUN echo "rvm_silence_path_mismatch_check_flag=1" >> ~/.rvmrc
-
-COPY install-packages /usr/bin
-### Python ###
-LABEL dazzle/layer=lang-python
-LABEL dazzle/test=tests/lang-python.yaml
-USER gitpod
-RUN sudo install-packages python3-pip
-
-ENV PATH=$HOME/.pyenv/bin:$HOME/.pyenv/shims:$PATH
-RUN curl -fsSL https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash \
-    && { echo; \
-        echo 'eval "$(pyenv init -)"'; \
-        echo 'eval "$(pyenv virtualenv-init -)"'; } >> /home/gitpod/.bashrc.d/60-python \
-    && pyenv update \
-    && pyenv install 3.7.6 \
-    && pyenv global 3.7.6 \
-    && python3 -m pip install --no-cache-dir --upgrade pip \
-    && python3 -m pip install --no-cache-dir --upgrade \
-        setuptools wheel virtualenv pipenv pylint rope flake8 \
-        mypy autopep8 pep8 pylama pydocstyle bandit notebook \
-        twine \
-    && sudo rm -rf /tmp/*
-# Gitpod will automatically add user site under `/workspace` to persist your packages.
-# ENV PYTHONUSERBASE=/workspace/.pip-modules \
-#    PIP_USER=yes
-
-## R ##
-RUN sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9 \
-    && sudo add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu xenial-cran35/' \
-    && sudo apt update \
-    && sudo apt install -y r-base r-base-core r-recommended
-
-# sudo apt install r-base r-base-core r-recommended
-
-# RUN sudo apt-get update && sudo apt-get install -y r-base=3.6.1
-
