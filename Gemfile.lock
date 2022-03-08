@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/firstdraft/draft_generators.git
-  revision: bbbf1a7475db166813fc25fbecd78dd83605eb40
+  revision: cdb86e59d35ccc34d8ac3de0082a7e972f2fcfc3
   branch: winter-2020
   specs:
     draft_generators (0.0.3)
