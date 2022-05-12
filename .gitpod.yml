@@ -1,11 +1,12 @@
-image: patrickmckernin/baserails2022winter
+image: jelaniwoods/appdev2022-base-rails
 
 tasks:
-  - init: bin/setup
+  - before: |
+      bin/setup
 ports:
   - port: 3000
     onOpen: open-preview
-  - port: 9515
+  - port: 9500-9999
     onOpen: ignore
 
 
