@@ -31,7 +31,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'sqlite3', '~> 1.4.1'
   gem 'table_print'
-  gem 'web_git', github: 'firstdraft/web_git', branch: 'spring2020'
+  gem 'web_git', github: 'firstdraft/web_git'
 end
 
 group :development do
@@ -40,7 +40,7 @@ group :development do
   gem 'binding_of_caller'
   gem 'draft_generators', github: 'firstdraft/draft_generators', branch: 'winter-2020'
   gem 'rails_db', '2.3.1'
- 
+
 end
 
 group :test do
