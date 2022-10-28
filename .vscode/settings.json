@@ -15,6 +15,9 @@
   "workbench.fontAliasing": "auto",
   "workbench.startupEditor": "none",
   "workbench.tree.renderIndentGuides": "always",
+  "files.associations": {
+    "*.html.erb": "erb"
+  },
   "files.autoSaveDelay": 500,
   "files.exclude": {
 		"**/.git": true,
