@@ -20,9 +20,9 @@
   },
   "files.autoSaveDelay": 500,
   "files.exclude": {
-		"**/.git": true,
-		".vscode": true,
-		".bundle": true
+    "**/.git": true,
+    ".vscode": true,
+    ".bundle": true
   },
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
@@ -35,10 +35,10 @@
   "html.format.templating": true,
   "terminal.integrated.altClickMovesCursor": true,
   "[erb]":  {
-		"editor.formatOnSave": true
+    "editor.formatOnSave": true
   },
   "[ruby]":  {
-		"editor.formatOnSave": true
+    "editor.formatOnSave": true
   },
   "vscode-erb-beautify.keepBlankLines": 1,
   "ruby.intellisense": false,
