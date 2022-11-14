@@ -22,7 +22,7 @@
   "files.exclude": {
 		"**/.git": true,
 		".vscode": true,
-		".bundle": true,
+		".bundle": true
   },
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
