@@ -2,6 +2,7 @@
   "editor.tabSize": 2,
   "editor.acceptSuggestionOnEnter": "off",
   "editor.bracketPairColorization.enabled": false,
+  "editor.cursorSurroundingLines": 4,
   "editor.dragAndDrop": false,
   "editor.guides.bracketPairs": true,
   "editor.linkedEditing": true,
