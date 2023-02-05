@@ -363,6 +363,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
   capybara
+  devise
   dotenv-rails
   draft_generators!
   factory_bot_rails
