@@ -3,7 +3,7 @@ class CreateLessons < ActiveRecord::Migration[6.0]
     create_table :lessons do |t|
       t.integer :course_id
       t.integer :practice_id
-      t.integer :day
+      t.integer :day, default: 0
       t.string :title
       t.string :description
       t.string :teaching_link
