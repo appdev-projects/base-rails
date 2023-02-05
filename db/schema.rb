@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_05_040945) do
+ActiveRecord::Schema.define(version: 2023_02_05_044058) do
 
   create_table "assessment_questions", force: :cascade do |t|
     t.string "name"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 2023_02_05_040945) do
     t.string "audio_link"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "spiritual_type"
   end
 
   create_table "practices", force: :cascade do |t|
