@@ -14,4 +14,9 @@
 #  practice_id   :integer
 #
 class Lesson < ApplicationRecord
+
+  belongs_to :course, required: true, class_name: "Course", foreign_key: "course_id", counter_cache: true
+  belongs_to :practice, required: true, class_name: "Practice", foreign_key: "practice_id"
+
+
 end
