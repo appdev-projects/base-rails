@@ -1,0 +1,2 @@
+class AssessmentQuestion < ApplicationRecord
+end
