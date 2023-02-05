@@ -33,12 +33,12 @@ class DeviseCreateSeekers < ActiveRecord::Migration[6.0]
       # t.datetime :locked_at
 
       t.string :full_name
-      t.float :personal_score default: 0
-      t.float :communal_score default: 0
-      t.float :environmental_score default: 0
-      t.float :transcendental_score default: 0
+      t.float :personal_score, default: 0
+      t.float :communal_score, default: 0
+      t.float :environmental_score, default: 0
+      t.float :transcendental_score, default: 0
       t.string :spiritual_type
-      t.integer :active_course_id default: 0
+      t.integer :active_course_id, default: 0
 
       t.timestamps null: false
     end
