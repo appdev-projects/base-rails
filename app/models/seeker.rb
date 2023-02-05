@@ -28,4 +28,10 @@ class Seeker < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  has_many  :lesson_events, class_name: "LessonEvent", foreign_key: "seeker_id", dependent: :destroy
+
+  belongs_to :course, class_name: "Course", foreign_key: "active_course_id"
+
+  
 end
