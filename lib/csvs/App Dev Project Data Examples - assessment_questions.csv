@@ -1,0 +1,28 @@
+name,question,spiritual_type,number,assessment
+divine_relationship,"A personal relationship with God, the Universe, or the Transcendent",transcendental,1,spiritual_type
+something_more,"Participating in the mystery that there is ""something more"" with sacred or divine qualities ""out there""",transcendental,2,spiritual_type
+creator_relationship,An awareness of my createdness; that my life is a gift from a Creator,transcendental,3,spiritual_type
+love_others,"The ability to love others, even when it's hard.",communalist,4,spiritual_type
+chain_link,"Knowing that I am a link in the chain of my family, my community, my ancestors, and/or humanity.",communalist,5,spiritual_type
+authentic_vulnerable,Having a community where it is safe to be authentic and vulnerable,communalist,6,spiritual_type
+nature_oneness,"Losing my sense of ego in the grandeur of the earth, the world, or the universe.",environmentalist,7,spiritual_type
+magic_vibrations,"Connecting with, sensing, or manipulating the magic, energy, or vibrations around me.",environmentalist,8,spiritual_type
+environment_harmony,Living my life in harmony with the natural rhythms of nature.,environmentalist,9,spiritual_type
+inner_peace,A sense of inner peace despite the pain and suffering in the world and in my life,personalist,10,spiritual_type
+self_knowing,Knowing the fullness of my self and all the facets of me,personalist,11,spiritual_type
+inner_resources,Relying primarily on my own inner resources to face the challenges of life,personalist,12,spiritual_type
+divine_relationship,"A personal relationship with God, the Universe, or the Transcendent",transcendental,1,spiritual_wellness
+something_more,"Participating in the mystery that there is ""something more"" with sacred or divine qualities ""out there""",transcendental,2,spiritual_wellness
+creator_relationship,An awareness of my createdness; that my life is a gift from a Creator,transcendental,3,spiritual_wellness
+love_others,"The ability to love others, even when it's hard.",communalist,4,spiritual_wellness
+chain_link,"Knowing that I am a link in the chain of my family, my community, my ancestors, and/or humanity.",communalist,5,spiritual_wellness
+authentic_vulnerable,Having a community where it is safe to be authentic and vulnerable,communalist,6,spiritual_wellness
+nature_oneness,"Losing my sense of ego in the grandeur of the earth, the world, or the universe.",environmentalist,7,spiritual_wellness
+magic_vibrations,"Connecting with, sensing, or manipulating the magic, energy, or vibrations around me.",environmentalist,8,spiritual_wellness
+environment_harmony,Living my life in harmony with the natural rhythms of nature.,environmentalist,9,spiritual_wellness
+inner_peace,A sense of inner peace despite the pain and suffering in the world and in my life,personalist,10,spiritual_wellness
+self_knowing,Knowing the fullness of my self and all the facets of me,personalist,11,spiritual_wellness
+inner_resources,Relying primarily on my own inner resources to face the challenges of life,personalist,12,spiritual_wellness
+body_mind,I best connect to the sacred through my ____.,,1,practice
+spoken_silence,I prefer my spiritual practice to be ____.,,2,practice
+free_ritual,I am most comfortable following ____.,,3,practice

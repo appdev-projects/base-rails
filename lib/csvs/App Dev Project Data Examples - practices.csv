@@ -1,0 +1,9 @@
+name,body_mind,spoken_silent,extemp_ritual,description
+pray,mind,words,Extemp,prayer description
+chant,mind,words,Ritual,chant description
+fast,mind,silence,Extemp,fasting description
+meditate,mind,silence,Ritual,meditation description
+commune,body,words,Extemp,communing description
+cleanse,body,words,Ritual,cleansing description
+wander,body,silence,Extemp,wandering description
+prostrate,body,silence,Ritual,prostration description
