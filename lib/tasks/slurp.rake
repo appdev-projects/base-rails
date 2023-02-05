@@ -37,11 +37,11 @@ namespace :slurp do
     csv.each do |row|
 
       pr = Practice.new
-      pr.name = row["email"]
-      pr.body_mind = row["full_name"]
-      pr.spoken_silent = row["password"]
-      pr.extemp_ritual = row["personal_score"]
-      pr.description = row["communal_score"]
+      pr.name = row["name"]
+      pr.body_mind = row["body_mind"]
+      pr.spoken_silent = row["spoken_silent"]
+      pr.extemp_ritual = row["extemp_ritual"]
+      pr.description = row["description"]
       pr.save
 
       puts "#{pr.name}, #{pr.description} saved"
