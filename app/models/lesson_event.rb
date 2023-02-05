@@ -10,4 +10,7 @@
 #  seeker_id  :integer
 #
 class LessonEvent < ApplicationRecord
+
+  enum :status, [ :not_started, :teaching_done, :pratice_done, :complete ]
+
 end
