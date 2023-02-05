@@ -1,0 +1,131 @@
+<div>
+  <div>
+    <h1>
+      Practice #<%= @the_practice.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/practices">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_practice/<%= @the_practice.id %>">
+          Delete practice
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Name
+      </dt>
+      <dd>
+        <%= @the_practice.name %>
+      </dd>
+
+      <dt>
+        Body mind
+      </dt>
+      <dd>
+        <%= @the_practice.body_mind %>
+      </dd>
+
+      <dt>
+        Spoken silent
+      </dt>
+      <dd>
+        <%= @the_practice.spoken_silent %>
+      </dd>
+
+      <dt>
+        Extemp ritual
+      </dt>
+      <dd>
+        <%= @the_practice.extemp_ritual %>
+      </dd>
+
+      <dt>
+        Description
+      </dt>
+      <dd>
+        <%= @the_practice.description %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_practice.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_practice.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit practice
+    </h2>
+
+    <form action="/modify_practice/<%= @the_practice.id %>"  method="post" >
+      <div>
+        <label for="name_box">
+          Name
+        </label>
+
+        <input type="text" id="name_box" name="query_name" value="<%= @the_practice.name %>">
+      </div>
+
+      <div>
+        <label for="body_mind_box">
+          Body mind
+        </label>
+
+        <input type="text" id="body_mind_box" name="query_body_mind" value="<%= @the_practice.body_mind %>">
+      </div>
+
+      <div>
+        <label for="spoken_silent_box">
+          Spoken silent
+        </label>
+
+        <input type="text" id="spoken_silent_box" name="query_spoken_silent" value="<%= @the_practice.spoken_silent %>">
+      </div>
+
+      <div>
+        <label for="extemp_ritual_box">
+          Extemp ritual
+        </label>
+
+        <input type="text" id="extemp_ritual_box" name="query_extemp_ritual" value="<%= @the_practice.extemp_ritual %>">
+      </div>
+
+      <div>
+        <label for="description_box">
+          Description
+        </label>
+
+        <input type="text" id="description_box" name="query_description" value="<%= @the_practice.description %>">
+      </div>
+
+      <button>
+        Update practice
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
