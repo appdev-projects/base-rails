@@ -1,5 +1,5 @@
 seeker_id,lesson_id,status
-1,1,0
-2,4,1
-3,1,2
-4,4,3
+1,1,not_started
+2,4,teaching_done
+3,1,practice_done
+4,4,complete

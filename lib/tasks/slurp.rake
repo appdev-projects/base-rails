@@ -93,8 +93,32 @@ namespace :slurp do
     puts "There are now #{AssessmentQuestion.count} rows in the Assessment Questions table"
   end
 
-
   task lessons: :environment do
+
+    require "csv"
+
+    csv_text = File.read(Rails.root.join("lib", "csvs", "App Dev Project Data Examples - lesson_plans.csv"))
+    csv = CSV.parse(csv_text, :headers => true, :encoding => "ISO-8859-1")
+    
+    csv.each do |row|
+
+      l = Lesson.new
+      l.course_id = row["course_id"]
+      l.practice_id = row["practice_id"]
+      l.day = row["day"]
+      l.title = row["title"]
+      l.description = row["description"]
+      l.spiritual_type = row["spiritual_type"]
+      l.teaching_link = row["teaching_link"]
+      l.audio_link = row["audio_link"]
+      l.save
+
+      puts "#{l.title}, #{l.description} saved"
+    end
+    puts "There are now #{Lesson.count} rows in the Lesson Events table"
+  end
+
+  task lesson_events: :environment do
 
     require "csv"
 
@@ -113,5 +137,7 @@ namespace :slurp do
     end
     puts "There are now #{LessonEvent.count} rows in the Lesson Events table"
   end
+
+
 
 end
