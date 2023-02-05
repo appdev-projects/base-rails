@@ -1,0 +1,32 @@
+<%= form_with(model: lesson_event, local: true) do |form| %>
+  <% if lesson_event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(lesson_event.errors.count, "error") %> prohibited this lesson_event from being saved:</h2>
+
+      <ul>
+        <% lesson_event.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :seeker_id %>
+    <%= form.number_field :seeker_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :lesson_id %>
+    <%= form.number_field :lesson_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.number_field :status %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -10,13 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_05_033341) do
+ActiveRecord::Schema.define(version: 2023_02_05_040044) do
 
   create_table "courses", force: :cascade do |t|
     t.string "spiritual_type"
     t.string "title"
     t.string "short_description"
     t.integer "lessons_count"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "lesson_events", force: :cascade do |t|
+    t.integer "seeker_id"
+    t.integer "lesson_id"
+    t.integer "status", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -29,6 +37,16 @@ ActiveRecord::Schema.define(version: 2023_02_05_033341) do
     t.string "description"
     t.string "teaching_link"
     t.string "audio_link"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "practices", force: :cascade do |t|
+    t.string "name"
+    t.string "body_mind"
+    t.string "spoken_silent"
+    t.string "extemp_ritual"
+    t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
