@@ -11,4 +11,8 @@
 #  updated_at        :datetime         not null
 #
 class Course < ApplicationRecord
+
+  has_many  :students, class_name: "Seeker", foreign_key: "active_course_id", dependent: :nullify
+  has_many  :lessons, class_name: "Lesson", foreign_key: "course_id", dependent: :destroy
+
 end
