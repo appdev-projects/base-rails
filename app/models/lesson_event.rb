@@ -13,4 +13,7 @@ class LessonEvent < ApplicationRecord
 
   enum :status, [ :not_started, :teaching_done, :pratice_done, :complete ]
 
+  belongs_to :seeker, required: true, class_name: "Seeker", foreign_key: "seeker_id"
+
+
 end
