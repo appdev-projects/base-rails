@@ -33,5 +33,7 @@ class Seeker < ApplicationRecord
 
   belongs_to :course, class_name: "Course", foreign_key: "active_course_id"
 
+  validates(:full_name, { :presence => true })
+
   
 end
