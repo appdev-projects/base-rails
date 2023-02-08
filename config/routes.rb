@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-  root "lesson_events#index"
+  root "application#index"
   
   resources :lesson_events
 
