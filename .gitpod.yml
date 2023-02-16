@@ -1,4 +1,4 @@
-image: jelaniwoods/appdev2022-base-rails
+image: jelaniwoods/appdev2022-base-rails-fly
 
 tasks:
   - before: |

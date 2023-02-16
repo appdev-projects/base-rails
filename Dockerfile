@@ -134,3 +134,7 @@ __git_complete g __git_main" >> ~/.bash_aliases
 # Hack to pre-install bundled gems
 RUN echo "rvm use 2.7.3" >> ~/.bashrc
 RUN echo "rvm_silence_path_mismatch_check_flag=1" >> ~/.rvmrc
+
+# Install flyyctl
+RUN /bin/bash -l -c "curl -L https://fly.io/install.sh | sh"
+RUN echo "export PATH=\"/home/gitpod/.fly/bin:\$PATH\"" >> ~/.bashrc
