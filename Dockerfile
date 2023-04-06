@@ -30,28 +30,28 @@ RUN add-apt-repository -y ppa:git-core/ppa \
     && apt-get install -yq git \
     && rm -rf /var/lib/apt/lists/*
 
-### Gitpod user ###
+### Codespace user ###
 # '-l': see https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#user
-RUN useradd -l -u 33333 -G sudo -md /home/gitpod -s /bin/bash -p gitpod gitpod \
+RUN useradd -l -u 33333 -G sudo -md /home/codespace -s /bin/bash -p codespace codespace \
     # passwordless sudo for users in the 'sudo' group
     && sed -i.bkp -e 's/%sudo\s\+ALL=(ALL\(:ALL\)\?)\s\+ALL/%sudo ALL=NOPASSWD:ALL/g' /etc/sudoers
-ENV HOME=/home/gitpod
+ENV HOME=/home/codespace
 WORKDIR $HOME
 # custom Bash prompt
 RUN { echo && echo "PS1='\[\e]0;\u \w\a\]\[\033[01;32m\]\u\[\033[00m\] \[\033[01;34m\]\w\[\033[00m\] \\\$ '" ; } >> .bashrc
 
-### Gitpod user (2) ###
-USER gitpod
+### Codespace user (2) ###
+USER codespace
 # use sudo so that user does not get sudo usage info on (the first) login
-RUN sudo echo "Running 'sudo' for Gitpod: success" && \
+RUN sudo echo "Running 'sudo' for Codespace: success" && \
     # create .bashrc.d folder and source it in the bashrc
-    mkdir /home/gitpod/.bashrc.d && \
-    (echo; echo "for i in \$(ls \$HOME/.bashrc.d/*); do source \$i; done"; echo) >> /home/gitpod/.bashrc
+    mkdir /home/codespace/.bashrc.d && \
+    (echo; echo "for i in \$(ls \$HOME/.bashrc.d/*); do source \$i; done"; echo) >> /home/codespace/.bashrc
 
 ### Ruby ###
 LABEL dazzle/layer=lang-ruby
 LABEL dazzle/test=tests/lang-ruby.yaml
-USER gitpod
+USER codespace
 RUN curl -sSL https://rvm.io/mpapis.asc | gpg --import - \
     && curl -sSL https://rvm.io/pkuczynski.asc | gpg --import - \
     && curl -fsSL https://get.rvm.io | bash -s stable \
@@ -61,10 +61,10 @@ RUN curl -sSL https://rvm.io/mpapis.asc | gpg --import - \
         && rvm use 2.7.3 --default \
         && rvm rubygems current \
         && gem install bundler --no-document" \
-    && echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*' >> /home/gitpod/.bashrc.d/70-ruby
-RUN echo "rvm_gems_path=/home/gitpod/.rvm" > ~/.rvmrc
+    && echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*' >> /home/codespace/.bashrc.d/70-ruby
+RUN echo "rvm_gems_path=/home/codespace/.rvm" > ~/.rvmrc
 
-USER gitpod
+USER codespace
 # AppDev stuff
 
 WORKDIR /base-rails
@@ -91,7 +91,7 @@ RUN BROWSER_MAJOR=$(google-chrome --version | sed 's/Google Chrome \([0-9]*\).*/
 
 # Pre-install gems into /base-rails/gems/
 COPY Gemfile /base-rails/Gemfile
-COPY --chown=gitpod:gitpod Gemfile.lock /base-rails/Gemfile.lock
+COPY --chown=codespace:codespace Gemfile.lock /base-rails/Gemfile.lock
 RUN /bin/bash -l -c "gem install bundler:2.1.4"
 RUN /bin/bash -l -c "mkdir gems && bundle config set --local path 'gems'"
 RUN /bin/bash -l -c "bundle install"
@@ -118,7 +118,7 @@ RUN git config --global push.default upstream \
     && git config --global alias.cob 'checkout -b'
 
 # Alias 'git' to 'g'
-RUN echo 'export PATH="$PATH:$GITPOD_REPO_ROOT/bin"' >> ~/.bashrc
+RUN echo 'export PATH="$PATH:$PWD/bin"' >> ~/.bashrc
 RUN echo "# No arguments: 'git status'\n\
 # With arguments: acts like 'git'\n\
 g() {\n\
@@ -137,4 +137,4 @@ RUN echo "rvm_silence_path_mismatch_check_flag=1" >> ~/.rvmrc
 
 # Install flyyctl
 RUN /bin/bash -l -c "curl -L https://fly.io/install.sh | sh"
-RUN echo "export PATH=\"/home/gitpod/.fly/bin:\$PATH\"" >> ~/.bashrc
+RUN echo "export PATH=\"/home/codespace/.fly/bin:\$PATH\"" >> ~/.bashrc
